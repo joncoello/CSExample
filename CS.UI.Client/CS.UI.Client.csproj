@@ -39,6 +39,9 @@
     <Reference Include="DAL">
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\CCH ProSystem\Deploy\DAL.dll</HintPath>
     </Reference>
+    <Reference Include="Janus.Data.v4, Version=4.0.32.0, Culture=neutral, PublicKeyToken=21d5517571b185bf" />
+    <Reference Include="Janus.Windows.Common.v4, Version=4.0.32.0, Culture=neutral, PublicKeyToken=21d5517571b185bf" />
+    <Reference Include="Janus.Windows.GridEX.v4, Version=4.0.32.0, Culture=neutral, PublicKeyToken=21d5517571b185bf, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -52,6 +55,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClientListForm\frmClientList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClientListForm\frmClientList.Designer.cs">
+      <DependentUpon>frmClientList.cs</DependentUpon>
+    </Compile>
     <Compile Include="ClientTab\frmClientTab.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -61,9 +70,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ClientListForm\frmClientList.resx">
+      <DependentUpon>frmClientList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ClientTab\frmClientTab.resx">
       <DependentUpon>frmClientTab.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CS.UI.Common\CS.UI.Common.csproj">

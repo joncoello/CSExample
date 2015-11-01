@@ -30,6 +30,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CSS">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\CCH ProSystem\Deploy\CSS.dll</HintPath>
+    </Reference>
+    <Reference Include="CSSInterface">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\CCH ProSystem\Deploy\CSSInterface.dll</HintPath>
+    </Reference>
+    <Reference Include="DAL">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\CCH ProSystem\Deploy\DAL.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,11 +49,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormFactory\ClientList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="FormFactory\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
