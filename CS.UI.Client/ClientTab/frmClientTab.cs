@@ -51,6 +51,13 @@ namespace CS.UI.Client.ClientTab
             
         }
 
+        private void cmdUploadDocument_Click(object sender, EventArgs e)
+        {
+            using (var ofd = new OpenFileDialog())
+            {
+                ofd.ShowDialog();
+            }
+        }
     }
 
 }

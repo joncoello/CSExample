@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F9CED5A8-7C6F-4BE3-845C-D855663838AD}</ProjectGuid>
+    <ProjectGuid>{89B501B6-7FE0-4023-985C-9774350535A9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CS.UI.Common</RootNamespace>
-    <AssemblyName>CS.UI.Common</AssemblyName>
+    <RootNamespace>CS.UI.Maintenance</RootNamespace>
+    <AssemblyName>CS.UI.Maintenance</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -16,7 +16,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\..\..\..\..\..\..\Program Files %28x86%29\CCH ProSystem\Deploy\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -33,6 +33,10 @@
     <Reference Include="CSS">
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\CCH ProSystem\Deploy\CSS.dll</HintPath>
     </Reference>
+    <Reference Include="CSSContactAPI, Version=2015.40.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\CCH ProSystem\Deploy\CSSContactAPI.dll</HintPath>
+    </Reference>
     <Reference Include="CSSInterface">
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\CCH ProSystem\Deploy\CSSInterface.dll</HintPath>
     </Reference>
@@ -41,6 +45,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -50,13 +56,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormFactory\ClientList.cs" />
-    <Compile Include="FormFactory\DataAPI.cs" />
-    <Compile Include="FormFactory\PortalIntegration.cs" />
-    <Compile Include="Menus.cs" />
+    <Compile Include="DataAPIForm\frmDataAPI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DataAPIForm\frmDataAPI.Designer.cs">
+      <DependentUpon>frmDataAPI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PortalIntegrationForm\frmPortalIntegration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PortalIntegrationForm\frmPortalIntegration.Designer.cs">
+      <DependentUpon>frmPortalIntegration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\CS.UI.Common\CS.UI.Common.csproj">
+      <Project>{f9ced5a8-7c6f-4be3-845c-d855663838ad}</Project>
+      <Name>CS.UI.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DataAPIForm\frmDataAPI.resx">
+      <DependentUpon>frmDataAPI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PortalIntegrationForm\frmPortalIntegration.resx">
+      <DependentUpon>frmPortalIntegration.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

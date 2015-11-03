@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{fc47a9ae-a420-4d68-8f5b-913fc4a4969e}</ProjectGuid>
+    <ArchitectureToolsVersion>2.0.0.0</ArchitectureToolsVersion>
+    <Name>CS.Modelling</Name>
+    <RootNamespace>CS.Modelling</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(VSToolsPath)\ArchitectureTools\Microsoft.VisualStudio.TeamArchitect.ModelingProject.targets" Condition="'$(VSToolsPath)' != ''" />
+  <ItemGroup>
+    <Folder Include="ModelDefinition\" />
+    <Content Include="ModelDefinition\CS.Modelling.uml">
+      <SubType>Content</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Validate Include="LayerDiagram.layerdiagram">
+      <SubType>Content</SubType>
+    </Validate>
+    <Validate Include="LayerDiagram.layerdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>LayerDiagram.layerdiagram</DependentUpon>
+    </Validate>
+    <Validate Include="LayerDiagram.layerdiagram.suppressions">
+      <SubType>Content</SubType>
+      <DependentUpon>LayerDiagram.layerdiagram</DependentUpon>
+    </Validate>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CS.DocumentRepository\CS.DocumentRepository.csproj">
+      <Name>CS.DocumentRepository</Name>
+      <Project>{b47cdb5f-85f4-402a-9dfb-1e21efa73311}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\CS.DomainModel\CS.DomainModel.csproj">
+      <Name>CS.DomainModel</Name>
+      <Project>{4d4565c6-9cf4-4c8b-9804-d7b2a8962266}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\CS.UI.Client\CS.UI.Client.csproj">
+      <Name>CS.UI.Client</Name>
+      <Project>{839983f1-dfaf-43ea-a5ff-5f92641188a1}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\CS.UI.Common\CS.UI.Common.csproj">
+      <Name>CS.UI.Common</Name>
+      <Project>{f9ced5a8-7c6f-4be3-845c-d855663838ad}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\CS.UI.Homepage\CS.UI.Homepage.csproj">
+      <Name>CS.UI.Homepage</Name>
+      <Project>{ee96eecb-ade4-42e3-9c47-e520d3a1249f}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\CS.UI.Maintenance\CS.UI.Maintenance.csproj">
+      <Name>CS.UI.Maintenance</Name>
+      <Project>{89b501b6-7fe0-4023-985c-9774350535a9}</Project>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

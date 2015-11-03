@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<layerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="7b113852-063e-46ca-afe9-71317d7c605c" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/LayerDesigner">
+  <layers>
+    <layer Id="8f85a106-6471-4280-aab9-45067039e667" name="UI Modules">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="d376b344-7a54-4a3f-a006-5d8898c36089" direction="Forward">
+          <layerMoniker Id="16fd1900-ddeb-4d77-983a-e9328f32b896" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="5efd985d-007f-45c0-8c3b-4803bf3d93a2" direction="Forward">
+          <layerMoniker Id="be197151-5dbd-407e-91d0-cc560da8f788" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+      <childLayers>
+        <layer Id="2fea0cce-0177-40e8-8cac-81f75954a2f7" name="CS.UI.Client">
+          <references>
+            <reference Id="784f35f8-11e2-4146-83cf-a1ac2adce04e" name="CS.UI.Client">
+              <ArtifactNode Label="CS.UI.Client" Category="CodeSchema_Project" Id="(Assembly=&quot;$(PersonalUri)/Visual Studio 2015/Projects/CS/CS.UI.Client/CS.UI.Client.csproj&quot;)">
+                <Category Ref="File" />
+              </ArtifactNode>
+              <ExpandedNode Id="(Assembly=CS.UI.Client)" Label="CS.UI.Client.dll" Category="CodeSchema_Assembly">
+                <Category Ref="FileSystem.Category.FileOfType.dll" />
+                <LinkCategory Ref="Produces" />
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+          </references>
+        </layer>
+        <layer Id="c2824277-2e56-4775-8b94-74c579f95ddb" name="CS.UI.Maintenance">
+          <references>
+            <reference Id="cc1da485-1031-4117-a03b-d652732981a2" name="CS.UI.Maintenance">
+              <ArtifactNode Label="CS.UI.Maintenance" Category="CodeSchema_Project" Id="(Assembly=&quot;$(PersonalUri)/Visual Studio 2015/Projects/CS/CS.UI.Maintenance/CS.UI.Maintenance.csproj&quot;)">
+                <Category Ref="File" />
+              </ArtifactNode>
+              <ExpandedNode Id="(Assembly=CS.UI.Maintenance)" Label="CS.UI.Maintenance.dll" Category="CodeSchema_Assembly">
+                <Category Ref="FileSystem.Category.FileOfType.dll" />
+                <LinkCategory Ref="Produces" />
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+          </references>
+        </layer>
+        <layer Id="6a2e8776-49ea-4783-aaca-39d40bbf22ac" name="CS.UI.Homepage">
+          <references>
+            <reference Id="c51518d7-5354-4c3b-890a-ae48a16c8b82" name="CS.UI.Homepage">
+              <ArtifactNode Label="CS.UI.Homepage" Category="CodeSchema_Project" Id="(Assembly=&quot;$(PersonalUri)/Visual Studio 2015/Projects/CS/CS.UI.Homepage/CS.UI.Homepage.csproj&quot;)">
+                <Category Ref="File" />
+              </ArtifactNode>
+              <ExpandedNode Id="(Assembly=CS.UI.Homepage)" Label="CS.UI.Homepage.dll" Category="CodeSchema_Assembly">
+                <Category Ref="FileSystem.Category.FileOfType.dll" />
+                <LinkCategory Ref="Produces" />
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+          </references>
+        </layer>
+      </childLayers>
+    </layer>
+    <layer Id="16fd1900-ddeb-4d77-983a-e9328f32b896" name="Cross cutting">
+      <childLayers>
+        <layer Id="458bca60-b264-45a9-aad1-3323db65cf44" name="CS.UI.Common">
+          <references>
+            <reference Id="8288ec67-0109-4da4-9943-ab5aae2dcbd1" name="CS.UI.Common">
+              <ArtifactNode Label="CS.UI.Common" Category="CodeSchema_Project" Id="(Assembly=&quot;$(PersonalUri)/Visual Studio 2015/Projects/CS/CS.UI.Common/CS.UI.Common.csproj&quot;)">
+                <Category Ref="File" />
+              </ArtifactNode>
+              <ExpandedNode Id="(Assembly=CS.UI.Common)" Label="CS.UI.Common.dll" Category="CodeSchema_Assembly">
+                <Category Ref="FileSystem.Category.FileOfType.dll" />
+                <LinkCategory Ref="Produces" />
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+          </references>
+        </layer>
+      </childLayers>
+    </layer>
+    <layer Id="be197151-5dbd-407e-91d0-cc560da8f788" name="CS.DomainModel">
+      <references>
+        <reference Id="340c302a-04ff-4bd9-a3b8-2dd59446278a" name="CS.DomainModel">
+          <ArtifactNode Label="CS.DomainModel" Category="CodeSchema_Project" Id="(Assembly=&quot;$(PersonalUri)/Visual Studio 2015/Projects/CS/CS.DomainModel/CS.DomainModel.csproj&quot;)">
+            <Category Ref="File" />
+          </ArtifactNode>
+          <ExpandedNode Id="(Assembly=CS.DomainModel)" Label="CS.DomainModel.dll" Category="CodeSchema_Assembly">
+            <Category Ref="FileSystem.Category.FileOfType.dll" />
+            <LinkCategory Ref="Produces" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+    <layer Id="434df8af-513c-4a9c-a6d3-d53989219274" name="CS.DocumentRepository">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="c2b633e0-f598-4936-907a-be1e10204f7c" direction="Forward">
+          <layerMoniker Id="be197151-5dbd-407e-91d0-cc560da8f788" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+      <references>
+        <reference Id="99c7cf31-c42d-4f1f-bbff-991ea1c31d32" name="CS.DocumentRepository">
+          <ArtifactNode Label="CS.DocumentRepository" Category="CodeSchema_Project" Id="(Assembly=&quot;$(PersonalUri)/Visual Studio 2015/Projects/CS/CS.DocumentRepository/CS.DocumentRepository.csproj&quot;)">
+            <Category Ref="File" />
+          </ArtifactNode>
+          <ExpandedNode Id="(Assembly=CS.DocumentRepository)" Label="CS.DocumentRepository.dll" Category="CodeSchema_Assembly">
+            <Category Ref="FileSystem.Category.FileOfType.dll" />
+            <LinkCategory Ref="Produces" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+  </layers>
+</layerModel>
