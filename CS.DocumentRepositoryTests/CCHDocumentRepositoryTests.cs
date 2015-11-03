@@ -30,5 +30,21 @@ namespace CS.DocumentRepositoryTests
             var docs = sut.GetDocuments();
             Assert.AreNotEqual(0, docs.Count());
         }
+
+        [TestMethod]
+        public void CCHDocumentRepository_Download()
+        {
+            string path = @"C:\scratch";
+            var contactID = 1323;
+            var centralDAL = new DAL("0");
+            var docManager = new DocManager(centralDAL);
+            var sut = new CCHDocumentRepository(docManager, contactID);
+            var docs = sut.GetDocuments();
+            Assert.AreNotEqual(0, docs.Count());
+
+            int documentID = docs.First().DocumentID;
+            sut.DownloadDocument(documentID, path);
+
+        }
     }
 }
