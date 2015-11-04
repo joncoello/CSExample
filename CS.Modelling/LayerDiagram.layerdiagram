@@ -56,6 +56,20 @@
             </reference>
           </references>
         </layer>
+        <layer Id="41aa6bb7-3618-4b68-b696-c51501364163" name="CS.Activities">
+          <references>
+            <reference Id="609e1524-feb0-48b5-8b1d-e4bef4c0d51b" name="CS.Activities">
+              <ArtifactNode Label="CS.Activities" Category="CodeSchema_Project" Id="(Assembly=&quot;$(PersonalUri)/Visual Studio 2015/Projects/CS/CS.Activities/CS.Activities.csproj&quot;)">
+                <Category Ref="File" />
+              </ArtifactNode>
+              <ExpandedNode Id="(Assembly=CS.Activities)" Label="CS.Activities.dll" Category="CodeSchema_Assembly">
+                <Category Ref="FileSystem.Category.FileOfType.dll" />
+                <LinkCategory Ref="Produces" />
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+          </references>
+        </layer>
       </childLayers>
     </layer>
     <layer Id="16fd1900-ddeb-4d77-983a-e9328f32b896" name="Cross cutting">

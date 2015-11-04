@@ -42,6 +42,8 @@ namespace CS.UI.Client.ClientListForm
             InitGrid();
             LoadData();
 
+            var f = new CS.UI.Maintenance.DataAPIForm.frmDataAPI(null);
+
         }
 
         private void InitGrid()

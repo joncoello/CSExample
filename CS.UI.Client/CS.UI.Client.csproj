@@ -99,6 +99,10 @@
       <Project>{f9ced5a8-7c6f-4be3-845c-d855663838ad}</Project>
       <Name>CS.UI.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CS.UI.Maintenance\CS.UI.Maintenance.csproj">
+      <Project>{89b501b6-7fe0-4023-985c-9774350535a9}</Project>
+      <Name>CS.UI.Maintenance</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

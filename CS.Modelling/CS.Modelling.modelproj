@@ -41,6 +41,10 @@
     </Validate>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CS.Activities\CS.Activities.csproj">
+      <Name>CS.Activities</Name>
+      <Project>{cfd2b66d-06c7-495c-8b62-0952c154d71e}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\CS.DocumentRepository\CS.DocumentRepository.csproj">
       <Name>CS.DocumentRepository</Name>
       <Project>{b47cdb5f-85f4-402a-9dfb-1e21efa73311}</Project>
