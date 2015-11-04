@@ -38,5 +38,26 @@ namespace CS.DocumentRepository
                Name = d.Name
             });
         }
+
+        public void UploadDocument(string path)
+        {
+            var document = new WKUK.CCH.Document.DocMgmt.Entities.Document()
+            {
+                LocalPath = path,
+                ImportedDocumentPath = path,
+                Description = Path.GetFileName(path),
+                DocumentTypeId = 6, // permanenent
+                LibraryId = 3, // client
+                CreatedDate = DateTime.Now,
+                CreatedByContactId = 1,
+                SourceId = 3,   
+                Name = Path.GetFileName(path),
+                SupressThumbnail = true,
+            };
+            document.ContactID = _contactID;
+            var documents = new WKUK.CCH.Document.DocMgmt.Entities.DocumentCollection();
+            documents.Add(document);
+            _cchDocumentAPI.UploadAddedDocuments(documents, false, 0);
+        }
     }
 }

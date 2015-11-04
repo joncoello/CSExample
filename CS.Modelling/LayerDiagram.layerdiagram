@@ -9,6 +9,9 @@
         <dependencyFromLayerToLayer Id="5efd985d-007f-45c0-8c3b-4803bf3d93a2" direction="Forward">
           <layerMoniker Id="be197151-5dbd-407e-91d0-cc560da8f788" />
         </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="1b6d551a-4a50-486c-aa21-258475b5b634" direction="Forward">
+          <layerMoniker Id="434df8af-513c-4a9c-a6d3-d53989219274" />
+        </dependencyFromLayerToLayer>
       </dependencyToLayers>
       <childLayers>
         <layer Id="2fea0cce-0177-40e8-8cac-81f75954a2f7" name="CS.UI.Client">

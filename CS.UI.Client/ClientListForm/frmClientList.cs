@@ -11,6 +11,7 @@ using CS.UI.Common.FormFactory;
 using MYOB.CSSInterface;
 using MYOB.CSS;
 using Janus.Windows.GridEX;
+using CS.DomainModel.Models.Documents;
 
 namespace CS.UI.Client.ClientListForm
 {
@@ -64,6 +65,6 @@ namespace CS.UI.Client.ClientListForm
             var data = new DataTable();
             grdList.SetDataBinding(data, string.Empty);
         }
-
+        
     }
 }

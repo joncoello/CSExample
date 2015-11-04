@@ -46,5 +46,17 @@ namespace CS.DocumentRepositoryTests
             sut.DownloadDocument(documentID, path);
 
         }
+
+        [TestMethod]
+        public void CCHDocumentRepository_Upload()
+        {
+            string path = @"C:\scratch\Cloud-Readiness-v012.docx";
+            var contactID = 1323;
+            var centralDAL = new DAL("0");
+            var docManager = new DocManager(centralDAL);
+            var sut = new CCHDocumentRepository(docManager, contactID);
+            sut.UploadDocument(path);
+
+        }
     }
 }

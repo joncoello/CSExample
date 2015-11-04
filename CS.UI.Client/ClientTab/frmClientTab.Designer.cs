@@ -30,6 +30,8 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.cmdUploadDocument = new System.Windows.Forms.Button();
+            this.grdList = new Janus.Windows.GridEX.GridEX();
+            ((System.ComponentModel.ISupportInitialize)(this.grdList)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -52,17 +54,30 @@
             this.cmdUploadDocument.UseVisualStyleBackColor = true;
             this.cmdUploadDocument.Click += new System.EventHandler(this.cmdUploadDocument_Click);
             // 
+            // grdList
+            // 
+            this.grdList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grdList.Location = new System.Drawing.Point(12, 88);
+            this.grdList.Name = "grdList";
+            this.grdList.Size = new System.Drawing.Size(469, 300);
+            this.grdList.TabIndex = 2;
+            this.grdList.RowDoubleClick += new Janus.Windows.GridEX.RowActionEventHandler(this.grdList_RowDoubleClick);
+            // 
             // frmClientTab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(493, 400);
+            this.Controls.Add(this.grdList);
             this.Controls.Add(this.cmdUploadDocument);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmClientTab";
             this.Text = "frmClientTab";
+            ((System.ComponentModel.ISupportInitialize)(this.grdList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -72,5 +87,6 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button cmdUploadDocument;
+        private Janus.Windows.GridEX.GridEX grdList;
     }
 }

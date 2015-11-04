@@ -33,6 +33,10 @@
     <Reference Include="CSS">
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\CCH ProSystem\Deploy\CSS.dll</HintPath>
     </Reference>
+    <Reference Include="CSSContactAPI, Version=2015.40.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\CCH ProSystem\Deploy\CSSContactAPI.dll</HintPath>
+    </Reference>
     <Reference Include="CSSInterface">
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\CCH ProSystem\Deploy\CSSInterface.dll</HintPath>
     </Reference>
@@ -53,6 +57,10 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="WKUK.CCH.Document.DocMgmt.DocManager, Version=2015.40.11510.12702, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\CCH ProSystem\Deploy\WKUK.CCH.Document.DocMgmt.DocManager.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClientListForm\frmClientList.cs">
@@ -79,6 +87,14 @@
     <EmbeddedResource Include="Properties\licenses.licx" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CS.DocumentRepository\CS.DocumentRepository.csproj">
+      <Project>{b47cdb5f-85f4-402a-9dfb-1e21efa73311}</Project>
+      <Name>CS.DocumentRepository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CS.DomainModel\CS.DomainModel.csproj">
+      <Project>{4d4565c6-9cf4-4c8b-9804-d7b2a8962266}</Project>
+      <Name>CS.DomainModel</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CS.UI.Common\CS.UI.Common.csproj">
       <Project>{f9ced5a8-7c6f-4be3-845c-d855663838ad}</Project>
       <Name>CS.UI.Common</Name>
