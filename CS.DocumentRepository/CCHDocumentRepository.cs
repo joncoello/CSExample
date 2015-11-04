@@ -10,6 +10,9 @@ using System.IO;
 
 namespace CS.DocumentRepository
 {
+    /// <summary>
+    /// Main clas for managing documents  in cch dm
+    /// </summary>
     public class CCHDocumentRepository : IDocumentRepository
     {
 

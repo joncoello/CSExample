@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
 using MYOB.CSS;
+using System.Xml;
+using MYOB.CSSInterface;
 
 namespace CS.UI.Homepage.ChartWidget
 {
@@ -19,6 +21,28 @@ namespace CS.UI.Homepage.ChartWidget
         public ctlChartWidget()
         {
             InitializeComponent();
+
+            AddHandles();
+        }
+
+        private void AddHandles()
+        {
+            CSSFormEventHandler.Instance.AddHandle("ClearSky.Example", "MyTextChanged", MyTextChanged);
+        }
+
+        private void MyTextChanged(object sender, EventArgs e)
+        {
+            var eArgs = e as FrameworkEventArgs;
+            if (eArgs != null)
+            {
+                string text = eArgs.PropertyBag["MyText"].ToString();
+                textBox1.Text = text;
+            }
+        }
+
+        private void RemoveHandles()
+        {
+            CSSFormEventHandler.Instance.RemoveHandle("ClearSky.Example", "MyTextChanged", MyTextChanged);
         }
 
         public override string DisplayName
@@ -46,6 +70,9 @@ namespace CS.UI.Homepage.ChartWidget
 
         private void GetData()
         {
+
+            Thread.Sleep(3000);
+
             _data = new DataTable();
             _data.Columns.Add("Description", typeof(string));
             _data.Columns.Add("Count", typeof(int));
@@ -73,8 +100,22 @@ namespace CS.UI.Homepage.ChartWidget
 
         private void chartControl_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            var formToLoad = new Common.FormFactory.ClientList();
+            var formToLoad = new Common.FormFactory.ClientList(Guid.NewGuid());
             CssContext.Instance.Host.Register(formToLoad);
+        }
+
+        public override void RestoreCustomisation(XmlElement Customisation)
+        {
+            if (Customisation.HasAttribute("mytext"))
+            {
+                string value = Customisation.Attributes["mytext"].Value;
+                textBox1.Text = value;
+            }
+        }
+
+        public override void SaveCustomisation(XmlTextWriter XW)
+        {
+            XW.WriteAttributeString("mytext", textBox1.Text);
         }
     }
 }

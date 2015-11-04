@@ -20,14 +20,18 @@ using WKUK.CCH.Document.DocMgmt.DocManager;
 
 namespace CS.UI.Client.ClientTab
 {
-    public partial class frmClientTab : Form, ICSSClientFormPlugIn
+    public partial class frmClientTab : Form, ICSSClientFormPlugIn, ICSSChildSideBarItems
     {
         private CCHDocumentRepository _documentRepo;
 
         public frmClientTab()
         {
             InitializeComponent();
+            this.Text = "Client Tax";
         }
+
+
+
 
         public int Position
         {
@@ -39,7 +43,7 @@ namespace CS.UI.Client.ClientTab
 
         public bool CheckSecurityPermission(AvailableArea Origin)
         {
-            return true;
+            return CssContext.Instance.Host.HasAuthority("can make tea");
         }
 
         public void CloseForm(object sender, CSSChildEventArgs e)
@@ -75,7 +79,7 @@ namespace CS.UI.Client.ClientTab
         {
             
         }
-
+        
         private void cmdUploadDocument_Click(object sender, EventArgs e)
         {
             using (var ofd = new OpenFileDialog())
@@ -112,7 +116,7 @@ namespace CS.UI.Client.ClientTab
             grdList.RootTable = rt;
             grdList.ColumnAutoResize = true;
 
-            CssContext.Instance.Host.Personalisation.RestoreGridLayout(this.GetType().FullName, grdList);
+            CssContext.Instance.Host.Personalisation.RestoreGridLayout("uniquestringforgrid", grdList);
 
         }
 
@@ -130,6 +134,22 @@ namespace CS.UI.Client.ClientTab
                 _documentRepo.DownloadDocument(document.DocumentID, directory);
                 Process.Start(downloadPath);
             }
+        }
+
+        public SideBarGroup[] GetSideBarItems()
+        {
+            var sbgs = new SideBarGroup[1];
+
+            sbgs[0] = new SideBarGroup();
+            sbgs[0].Name = "Group 1";
+            sbgs[0].Add("Item 1", 0, SidebarCLicked);
+
+            return sbgs;
+        }
+
+        private void SidebarCLicked(object Sender, SideBarEventArgs e)
+        {
+            MessageBox.Show("Test");
         }
     }
 

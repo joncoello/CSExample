@@ -15,13 +15,16 @@ namespace CS.UI.Common
         public Menus()
         {
 
+            // set product name - mu have it in
             ProductName = "Example";
+
 
             var mnuMaintenance = this.Add("mnuMaintenance", "Maintenance", MenuItemType.Group);
 
             var mnuClearSky = mnuMaintenance.Add("mnuClearSky", "ClearSky", CSSMenuItem.MenuItemType.Group);
 
             mnuClearSky.Add("mnuItem1", "Item 1", CSSMenuItem.MenuItemType.Item);
+            mnuClearSky.Add("mnuItem2", "Item 2", CSSMenuItem.MenuItemType.Item);
             mnuClearSky.Add("mnuDataAPI", "Data API", CSSMenuItem.MenuItemType.Item);
 
         }
@@ -34,6 +37,15 @@ namespace CS.UI.Common
                     var formToLoad1 = new FormFactory.PortalIntegration();
                     CssContext.Instance.Host.Register(formToLoad1);
                     break;
+
+
+                case "mnuItem2":
+                    var formToLoad3 = new FormFactory.ClientList(Guid.NewGuid());
+                    CssContext.Instance.Host.Register(formToLoad3);
+                    break;
+
+
+
                 case "mnuDataAPI":
                     var formToLoad2 = new FormFactory.DataAPI();
                     CssContext.Instance.Host.Register(formToLoad2);

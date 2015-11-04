@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="FormFactory\ClientList.cs" />
     <Compile Include="FormFactory\DataAPI.cs" />
+    <Compile Include="FormFactory\ModalForm.cs" />
     <Compile Include="FormFactory\PortalIntegration.cs" />
     <Compile Include="Menus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

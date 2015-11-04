@@ -75,6 +75,12 @@
     <Compile Include="ClientTab\frmClientTab.Designer.cs">
       <DependentUpon>frmClientTab.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modal\frmModalForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modal\frmModalForm.Designer.cs">
+      <DependentUpon>frmModalForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -83,6 +89,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ClientTab\frmClientTab.resx">
       <DependentUpon>frmClientTab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modal\frmModalForm.resx">
+      <DependentUpon>frmModalForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
   </ItemGroup>

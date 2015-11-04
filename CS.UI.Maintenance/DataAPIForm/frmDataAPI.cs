@@ -42,17 +42,26 @@ namespace CS.UI.Maintenance.DataAPIForm
         {
             base.OnLoad(e);
 
+            // recommeded in central
             _centralDal = CssContext.Instance.GetDAL(string.Empty) as DAL;
+            
             _gateway = new CentralGateway(_centralDal);
 
         }
 
         private void cmdCreateIndividual_Click(object sender, EventArgs e)
         {
-            
+
+            var field = _gateway.FindExtraField("Turnover");
+                        
             var i = new Individual() {
                 LastName = "Smith" 
             };
+
+            i.ExtraFields.Add(new ExtraValue() {
+                ExtraFieldId = field.ExtraFieldId,
+                Value = "100000"
+            });
 
             _gateway.Save(i);
 
@@ -60,5 +69,28 @@ namespace CS.UI.Maintenance.DataAPIForm
 
         }
 
+        private void cmdCreateClient_Click(object sender, EventArgs e)
+        {
+
+            var field = _gateway.FindExtraField("Turnover");
+
+            var i = new Individual()
+            {
+                LastName = "Smith"
+            };
+
+            i.ExtraFields.Add(new ExtraValue()
+            {
+                ExtraFieldId = field.ExtraFieldId,
+                Value = "100000"
+            });
+
+            _gateway.Save(i);
+
+            var client = _gateway.ConvertContactToClient(i, "034756", CssContext.Instance.Host.EmployeeId);
+
+            CssContext.Instance.Host.OpenContact(i.ContactId);
+
+        }
     }
 }
