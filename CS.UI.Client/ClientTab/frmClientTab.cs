@@ -17,12 +17,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WKUK.CCH.Document.DocMgmt.DocManager;
+using Workflow.Server.Messaging;
+using Workflow.Server.Messaging.Messages;
 
 namespace CS.UI.Client.ClientTab
 {
     public partial class frmClientTab : Form, ICSSClientFormPlugIn, ICSSChildSideBarItems
     {
         private CCHDocumentRepository _documentRepo;
+        private int _contactID;
 
         public frmClientTab()
         {
@@ -48,7 +51,7 @@ namespace CS.UI.Client.ClientTab
 
         public void CloseForm(object sender, CSSChildEventArgs e)
         {
-            
+
         }
 
         public void LoadClient(int ClientId, ICSSHost Host)
@@ -58,6 +61,9 @@ namespace CS.UI.Client.ClientTab
             var docManager = new DocManager(centralDal);
             var centralGateway = new CentralGateway(centralDal);
             var client = centralGateway.FindClient(ClientId, CssContext.Instance.Host.EmployeeId);
+
+            _contactID = client.Contact.ContactId;
+
             _documentRepo = new CCHDocumentRepository(docManager, client.Contact.ContactId);
             RefreshData();
 
@@ -77,14 +83,14 @@ namespace CS.UI.Client.ClientTab
 
         public void SaveChanges(object sender, CSSChildSaveEventArgs e)
         {
-            
+
         }
-        
+
         private void cmdUploadDocument_Click(object sender, EventArgs e)
         {
             using (var ofd = new OpenFileDialog())
             {
-                if(ofd.ShowDialog()== DialogResult.OK)
+                if (ofd.ShowDialog() == DialogResult.OK)
                 {
                     string fileName = ofd.FileName;
                     _documentRepo.UploadDocument(fileName);
@@ -99,7 +105,7 @@ namespace CS.UI.Client.ClientTab
 
             InitGrid();
         }
-        
+
         private void InitGrid()
         {
             GridEXColumn col;
@@ -150,6 +156,22 @@ namespace CS.UI.Client.ClientTab
         private void SidebarCLicked(object Sender, SideBarEventArgs e)
         {
             MessageBox.Show("Test");
+        }
+
+        private void cmdStartWorkflow_Click(object sender, EventArgs e)
+        {
+            // create gateway
+            var centralDAL = CssContext.Instance.GetDAL(string.Empty) as DAL;
+            CentralMessageGateway messageGateway = new CentralMessageGateway(centralDAL);
+
+            // create message
+            var msg = new StartWorkflowMessage();
+            msg.PropertyBag.WorkflowName = "ClearSkyWF";
+            msg.PropertyBag.ContactID =  _contactID;
+
+            //send
+            messageGateway.SendMessage<StartWorkflowMessage>(msg);
+
         }
     }
 

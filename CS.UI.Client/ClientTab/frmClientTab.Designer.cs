@@ -31,6 +31,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cmdUploadDocument = new System.Windows.Forms.Button();
             this.grdList = new Janus.Windows.GridEX.GridEX();
+            this.cmdStartWorkflow = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.grdList)).BeginInit();
             this.SuspendLayout();
             // 
@@ -65,12 +66,23 @@
             this.grdList.TabIndex = 2;
             this.grdList.RowDoubleClick += new Janus.Windows.GridEX.RowActionEventHandler(this.grdList_RowDoubleClick);
             // 
+            // cmdStartWorkflow
+            // 
+            this.cmdStartWorkflow.Location = new System.Drawing.Point(264, 33);
+            this.cmdStartWorkflow.Name = "cmdStartWorkflow";
+            this.cmdStartWorkflow.Size = new System.Drawing.Size(124, 23);
+            this.cmdStartWorkflow.TabIndex = 3;
+            this.cmdStartWorkflow.Text = "Start workflow";
+            this.cmdStartWorkflow.UseVisualStyleBackColor = true;
+            this.cmdStartWorkflow.Click += new System.EventHandler(this.cmdStartWorkflow_Click);
+            // 
             // frmClientTab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(493, 400);
+            this.Controls.Add(this.cmdStartWorkflow);
             this.Controls.Add(this.grdList);
             this.Controls.Add(this.cmdUploadDocument);
             this.Controls.Add(this.label1);
@@ -88,5 +100,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button cmdUploadDocument;
         private Janus.Windows.GridEX.GridEX grdList;
+        private System.Windows.Forms.Button cmdStartWorkflow;
     }
 }
