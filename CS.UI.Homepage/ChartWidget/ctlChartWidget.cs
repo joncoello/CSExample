@@ -27,7 +27,7 @@ namespace CS.UI.Homepage.ChartWidget
 
         private void AddHandles()
         {
-            CSSFormEventHandler.Instance.AddHandle("ClearSky.Example", "MyTextChanged", MyTextChanged);
+            CSSFormEventHandler.Instance.AddHandle("CS.Example", "MyTextChanged", MyTextChanged);
         }
 
         private void MyTextChanged(object sender, EventArgs e)
@@ -42,7 +42,7 @@ namespace CS.UI.Homepage.ChartWidget
 
         private void RemoveHandles()
         {
-            CSSFormEventHandler.Instance.RemoveHandle("ClearSky.Example", "MyTextChanged", MyTextChanged);
+            CSSFormEventHandler.Instance.RemoveHandle("CS.Example", "MyTextChanged", MyTextChanged);
         }
 
         public override string DisplayName

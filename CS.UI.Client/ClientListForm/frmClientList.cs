@@ -105,7 +105,7 @@ namespace CS.UI.Client.ClientListForm
         {
             var eArgs = new FrameworkEventArgs();
             eArgs.PropertyBag.Add("MyText", txtBroadcast.Text);
-            CSSFormEventHandler.Instance.FrameWorkEvent("ClearSky.Example", "MyTextChanged", eArgs);
+            CSSFormEventHandler.Instance.FrameWorkEvent("CS.Example", "MyTextChanged", eArgs);
         }
     }
 }

@@ -166,7 +166,7 @@ namespace CS.UI.Client.ClientTab
 
             // create message
             var msg = new StartWorkflowMessage();
-            msg.PropertyBag.WorkflowName = "ClearSkyWF";
+            msg.PropertyBag.WorkflowName = "CSWF";
             msg.PropertyBag.ContactID =  _contactID;
 
             //send
