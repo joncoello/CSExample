@@ -36,11 +36,15 @@
     <Reference Include="CSSInterface">
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\CCH ProSystem\Deploy\CSSInterface.dll</HintPath>
     </Reference>
+    <Reference Include="CSSTaskManagement">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\CCH ProSystem\Deploy\CSSTaskManagement.dll</HintPath>
+    </Reference>
     <Reference Include="DAL">
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\CCH ProSystem\Deploy\DAL.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -54,10 +58,20 @@
     <Compile Include="FormFactory\DataAPI.cs" />
     <Compile Include="FormFactory\ModalForm.cs" />
     <Compile Include="FormFactory\PortalIntegration.cs" />
+    <Compile Include="Homepagesidebar.cs" />
     <Compile Include="Menus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\CS.DomainModel\CS.DomainModel.csproj">
+      <Project>{4d4565c6-9cf4-4c8b-9804-d7b2a8962266}</Project>
+      <Name>CS.DomainModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CS.TaskRepository\CS.TaskRepository.csproj">
+      <Project>{6c0a4c0a-0019-4d3d-926f-5c7f45435b02}</Project>
+      <Name>CS.TaskRepository</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
