@@ -53,6 +53,10 @@
       <Name>CS.DomainModel</Name>
       <Project>{4d4565c6-9cf4-4c8b-9804-d7b2a8962266}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\CS.TaskRepository\CS.TaskRepository.csproj">
+      <Name>CS.TaskRepository</Name>
+      <Project>{6c0a4c0a-0019-4d3d-926f-5c7f45435b02}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\CS.UI.Client\CS.UI.Client.csproj">
       <Name>CS.UI.Client</Name>
       <Project>{839983f1-dfaf-43ea-a5ff-5f92641188a1}</Project>

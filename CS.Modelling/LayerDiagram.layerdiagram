@@ -12,6 +12,9 @@
         <dependencyFromLayerToLayer Id="1b6d551a-4a50-486c-aa21-258475b5b634" direction="Forward">
           <layerMoniker Id="434df8af-513c-4a9c-a6d3-d53989219274" />
         </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="148ff43f-8449-412c-b4d9-5296948be097" direction="Forward">
+          <layerMoniker Id="2e9b51c3-2145-49ef-a352-3134124abb8f" />
+        </dependencyFromLayerToLayer>
       </dependencyToLayers>
       <childLayers>
         <layer Id="2fea0cce-0177-40e8-8cac-81f75954a2f7" name="CS.UI.Client">
@@ -116,6 +119,25 @@
             <Category Ref="File" />
           </ArtifactNode>
           <ExpandedNode Id="(Assembly=CS.DocumentRepository)" Label="CS.DocumentRepository.dll" Category="CodeSchema_Assembly">
+            <Category Ref="FileSystem.Category.FileOfType.dll" />
+            <LinkCategory Ref="Produces" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+    <layer Id="2e9b51c3-2145-49ef-a352-3134124abb8f" name="CS.TaskRepository">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="b0bcef3c-765c-43c4-b8f9-48f016d08c80" direction="Forward">
+          <layerMoniker Id="be197151-5dbd-407e-91d0-cc560da8f788" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+      <references>
+        <reference Id="8b6f1540-e0c2-4046-8866-7fd28240c6e7" name="CS.TaskRepository">
+          <ArtifactNode Label="CS.TaskRepository" Category="CodeSchema_Project" Id="(Assembly=&quot;$(PersonalUri)/Visual Studio 2015/Projects/CS/CS.TaskRepository/CS.TaskRepository.csproj&quot;)">
+            <Category Ref="File" />
+          </ArtifactNode>
+          <ExpandedNode Id="(Assembly=CS.TaskRepository)" Label="CS.TaskRepository.dll" Category="CodeSchema_Assembly">
             <Category Ref="FileSystem.Category.FileOfType.dll" />
             <LinkCategory Ref="Produces" />
             <LinkCategory Ref="Represents" />
