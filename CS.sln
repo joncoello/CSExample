@@ -30,6 +30,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CS.TaskRepository", "CS.Tas
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CS.TaskRepositoryTests", "CS.TaskRepositoryTests\CS.TaskRepositoryTests.csproj", "{CAE614BC-A516-4C2E-AA36-9D4CBA2A73E8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CS.PortaIntegration", "CS.PortaIntegration\CS.PortaIntegration.csproj", "{E8E71E9D-3CC5-4BFD-B4F0-24D723E5EBF4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CS.PortaIntegrationTests", "CS.PortaIntegrationTests\CS.PortaIntegrationTests.csproj", "{37D07B3E-8642-4EC1-B3C8-50E8187A9034}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -80,6 +84,14 @@ Global
 		{CAE614BC-A516-4C2E-AA36-9D4CBA2A73E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CAE614BC-A516-4C2E-AA36-9D4CBA2A73E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CAE614BC-A516-4C2E-AA36-9D4CBA2A73E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8E71E9D-3CC5-4BFD-B4F0-24D723E5EBF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8E71E9D-3CC5-4BFD-B4F0-24D723E5EBF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8E71E9D-3CC5-4BFD-B4F0-24D723E5EBF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8E71E9D-3CC5-4BFD-B4F0-24D723E5EBF4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37D07B3E-8642-4EC1-B3C8-50E8187A9034}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37D07B3E-8642-4EC1-B3C8-50E8187A9034}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37D07B3E-8642-4EC1-B3C8-50E8187A9034}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37D07B3E-8642-4EC1-B3C8-50E8187A9034}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
