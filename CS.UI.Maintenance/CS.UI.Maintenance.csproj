@@ -43,6 +43,9 @@
     <Reference Include="DAL">
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\CCH ProSystem\Deploy\DAL.dll</HintPath>
     </Reference>
+    <Reference Include="Janus.Data.v4, Version=4.0.32.0, Culture=neutral, PublicKeyToken=21d5517571b185bf" />
+    <Reference Include="Janus.Windows.Common.v4, Version=4.0.32.0, Culture=neutral, PublicKeyToken=21d5517571b185bf" />
+    <Reference Include="Janus.Windows.GridEX.v4, Version=4.0.32.0, Culture=neutral, PublicKeyToken=21d5517571b185bf, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -71,6 +74,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CS.DomainModel\CS.DomainModel.csproj">
+      <Project>{4d4565c6-9cf4-4c8b-9804-d7b2a8962266}</Project>
+      <Name>CS.DomainModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CS.PortaIntegration\CS.PortaIntegration.csproj">
+      <Project>{e8e71e9d-3cc5-4bfd-b4f0-24d723e5ebf4}</Project>
+      <Name>CS.PortaIntegration</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CS.UI.Common\CS.UI.Common.csproj">
       <Project>{f9ced5a8-7c6f-4be3-845c-d855663838ad}</Project>
       <Name>CS.UI.Common</Name>
@@ -83,6 +94,7 @@
     <EmbeddedResource Include="PortalIntegrationForm\frmPortalIntegration.resx">
       <DependentUpon>frmPortalIntegration.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

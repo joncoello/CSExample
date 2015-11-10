@@ -1,4 +1,5 @@
 ﻿using CS.DomainModel.Models.Portal;
+using CS.DomainModel.Proxies;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ using System.Xml.Linq;
 
 namespace CS.PortaIntegration
 {
-    public class PortalProxy
+    public class PortalProxy : IPortalProxy
     {
         private readonly string _baseUrl;
         private HttpClient _client;

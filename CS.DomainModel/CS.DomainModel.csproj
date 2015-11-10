@@ -44,11 +44,14 @@
     <Compile Include="Models\Portal\Client.cs" />
     <Compile Include="Models\Tasks\CentralTask.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Proxies\IPortalProxy.cs" />
     <Compile Include="Repositories\IDocumentRepository.cs" />
     <Compile Include="Repositories\ITaskRepository.cs" />
     <Compile Include="Services\DocumentService.cs" />
     <Compile Include="Services\IDocumentService.cs" />
+    <Compile Include="Services\IPortalService.cs" />
     <Compile Include="Services\ITaskService.cs" />
+    <Compile Include="Services\PortalService.cs" />
     <Compile Include="Services\TaskService.cs" />
   </ItemGroup>
   <ItemGroup />

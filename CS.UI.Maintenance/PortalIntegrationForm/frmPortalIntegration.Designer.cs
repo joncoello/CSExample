@@ -29,74 +29,128 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.cmdTest = new System.Windows.Forms.Button();
-            this.cmdLogIn = new System.Windows.Forms.Button();
-            this.cmdLogOut = new System.Windows.Forms.Button();
-            this.txtResponse = new System.Windows.Forms.TextBox();
+            this.gridEX1 = new Janus.Windows.GridEX.GridEX();
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.txtUserName = new System.Windows.Forms.TextBox();
+            this.txtPracticeGuid = new System.Windows.Forms.TextBox();
+            this.txtUrl = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.gridEX1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(13, 13);
+            this.label1.Location = new System.Drawing.Point(17, 16);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(113, 20);
+            this.label1.Size = new System.Drawing.Size(139, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "Portal Test Rig";
             // 
-            // cmdTest
+            // gridEX1
             // 
-            this.cmdTest.Location = new System.Drawing.Point(12, 54);
-            this.cmdTest.Name = "cmdTest";
-            this.cmdTest.Size = new System.Drawing.Size(75, 23);
-            this.cmdTest.TabIndex = 1;
-            this.cmdTest.Text = "Test";
-            this.cmdTest.UseVisualStyleBackColor = true;
-            this.cmdTest.Click += new System.EventHandler(this.cmdTest_Click);
+            this.gridEX1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gridEX1.Location = new System.Drawing.Point(22, 166);
+            this.gridEX1.Name = "gridEX1";
+            this.gridEX1.Size = new System.Drawing.Size(778, 371);
+            this.gridEX1.TabIndex = 9;
             // 
-            // cmdLogIn
+            // txtPassword
             // 
-            this.cmdLogIn.Location = new System.Drawing.Point(12, 83);
-            this.cmdLogIn.Name = "cmdLogIn";
-            this.cmdLogIn.Size = new System.Drawing.Size(75, 23);
-            this.cmdLogIn.TabIndex = 2;
-            this.cmdLogIn.Text = "Log in";
-            this.cmdLogIn.UseVisualStyleBackColor = true;
-            this.cmdLogIn.Click += new System.EventHandler(this.cmdLogIn_Click);
+            this.txtPassword.Location = new System.Drawing.Point(114, 138);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Size = new System.Drawing.Size(218, 22);
+            this.txtPassword.TabIndex = 8;
+            this.txtPassword.Text = "1";
             // 
-            // cmdLogOut
+            // txtUserName
             // 
-            this.cmdLogOut.Location = new System.Drawing.Point(12, 112);
-            this.cmdLogOut.Name = "cmdLogOut";
-            this.cmdLogOut.Size = new System.Drawing.Size(75, 23);
-            this.cmdLogOut.TabIndex = 3;
-            this.cmdLogOut.Text = "Log out";
-            this.cmdLogOut.UseVisualStyleBackColor = true;
-            this.cmdLogOut.Click += new System.EventHandler(this.cmdLogOut_Click);
+            this.txtUserName.Location = new System.Drawing.Point(114, 110);
+            this.txtUserName.Name = "txtUserName";
+            this.txtUserName.Size = new System.Drawing.Size(218, 22);
+            this.txtUserName.TabIndex = 6;
+            this.txtUserName.Text = "jon.coello@wolterskluwer.co.uk";
             // 
-            // txtResponse
+            // txtPracticeGuid
             // 
-            this.txtResponse.Location = new System.Drawing.Point(115, 54);
-            this.txtResponse.Multiline = true;
-            this.txtResponse.Name = "txtResponse";
-            this.txtResponse.Size = new System.Drawing.Size(482, 380);
-            this.txtResponse.TabIndex = 4;
+            this.txtPracticeGuid.Location = new System.Drawing.Point(114, 82);
+            this.txtPracticeGuid.Name = "txtPracticeGuid";
+            this.txtPracticeGuid.Size = new System.Drawing.Size(218, 22);
+            this.txtPracticeGuid.TabIndex = 4;
+            this.txtPracticeGuid.Text = "e5e86e6c-15e0-4e47-85fd-deb7180c1c2d";
+            // 
+            // txtUrl
+            // 
+            this.txtUrl.Location = new System.Drawing.Point(114, 54);
+            this.txtUrl.Name = "txtUrl";
+            this.txtUrl.Size = new System.Drawing.Size(218, 22);
+            this.txtUrl.TabIndex = 2;
+            this.txtUrl.Text = "https://cchcs01.clientspace.co.uk";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(19, 57);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(26, 17);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Url";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(19, 85);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(89, 17);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "PracticeGuid";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(19, 113);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(75, 17);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "UserName";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(19, 141);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(69, 17);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "Password";
             // 
             // frmPortalIntegration
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(609, 446);
-            this.Controls.Add(this.txtResponse);
-            this.Controls.Add(this.cmdLogOut);
-            this.Controls.Add(this.cmdLogIn);
-            this.Controls.Add(this.cmdTest);
+            this.ClientSize = new System.Drawing.Size(812, 549);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.txtUrl);
+            this.Controls.Add(this.txtPracticeGuid);
+            this.Controls.Add(this.txtUserName);
+            this.Controls.Add(this.txtPassword);
+            this.Controls.Add(this.gridEX1);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmPortalIntegration";
             this.Text = "frmPortalIntegration";
+            ((System.ComponentModel.ISupportInitialize)(this.gridEX1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -105,9 +159,14 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button cmdTest;
-        private System.Windows.Forms.Button cmdLogIn;
-        private System.Windows.Forms.Button cmdLogOut;
-        private System.Windows.Forms.TextBox txtResponse;
+        private Janus.Windows.GridEX.GridEX gridEX1;
+        private System.Windows.Forms.TextBox txtPassword;
+        private System.Windows.Forms.TextBox txtUserName;
+        private System.Windows.Forms.TextBox txtPracticeGuid;
+        private System.Windows.Forms.TextBox txtUrl;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
     }
 }
