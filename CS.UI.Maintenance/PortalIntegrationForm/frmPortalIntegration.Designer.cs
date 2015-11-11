@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.gridEX1 = new Janus.Windows.GridEX.GridEX();
+            this.grdClients = new Janus.Windows.GridEX.GridEX();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.txtUserName = new System.Windows.Forms.TextBox();
             this.txtPracticeGuid = new System.Windows.Forms.TextBox();
@@ -38,7 +38,11 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.gridEX1)).BeginInit();
+            this.grdFolders = new Janus.Windows.GridEX.GridEX();
+            this.grdDocuments = new Janus.Windows.GridEX.GridEX();
+            ((System.ComponentModel.ISupportInitialize)(this.grdClients)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdFolders)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdDocuments)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -52,15 +56,15 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Portal Test Rig";
             // 
-            // gridEX1
+            // grdClients
             // 
-            this.gridEX1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.gridEX1.Location = new System.Drawing.Point(22, 166);
-            this.gridEX1.Name = "gridEX1";
-            this.gridEX1.Size = new System.Drawing.Size(778, 371);
-            this.gridEX1.TabIndex = 9;
+            this.grdClients.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.grdClients.Location = new System.Drawing.Point(22, 166);
+            this.grdClients.Name = "grdClients";
+            this.grdClients.Size = new System.Drawing.Size(310, 371);
+            this.grdClients.TabIndex = 9;
+            this.grdClients.SelectionChanged += new System.EventHandler(this.grdClients_SelectionChanged);
             // 
             // txtPassword
             // 
@@ -130,12 +134,35 @@
             this.label5.TabIndex = 7;
             this.label5.Text = "Password";
             // 
+            // grdFolders
+            // 
+            this.grdFolders.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.grdFolders.Location = new System.Drawing.Point(338, 166);
+            this.grdFolders.Name = "grdFolders";
+            this.grdFolders.Size = new System.Drawing.Size(320, 371);
+            this.grdFolders.TabIndex = 10;
+            this.grdFolders.SelectionChanged += new System.EventHandler(this.grdFolders_SelectionChanged);
+            // 
+            // grdDocuments
+            // 
+            this.grdDocuments.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grdDocuments.Location = new System.Drawing.Point(664, 166);
+            this.grdDocuments.Name = "grdDocuments";
+            this.grdDocuments.Size = new System.Drawing.Size(246, 371);
+            this.grdDocuments.TabIndex = 11;
+            this.grdDocuments.RowDoubleClick += new Janus.Windows.GridEX.RowActionEventHandler(this.grdDocuments_RowDoubleClick);
+            // 
             // frmPortalIntegration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(812, 549);
+            this.ClientSize = new System.Drawing.Size(922, 549);
+            this.Controls.Add(this.grdDocuments);
+            this.Controls.Add(this.grdFolders);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -144,13 +171,15 @@
             this.Controls.Add(this.txtPracticeGuid);
             this.Controls.Add(this.txtUserName);
             this.Controls.Add(this.txtPassword);
-            this.Controls.Add(this.gridEX1);
+            this.Controls.Add(this.grdClients);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmPortalIntegration";
             this.Text = "frmPortalIntegration";
-            ((System.ComponentModel.ISupportInitialize)(this.gridEX1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdClients)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdFolders)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdDocuments)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -159,7 +188,7 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private Janus.Windows.GridEX.GridEX gridEX1;
+        private Janus.Windows.GridEX.GridEX grdClients;
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.TextBox txtUserName;
         private System.Windows.Forms.TextBox txtPracticeGuid;
@@ -168,5 +197,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+        private Janus.Windows.GridEX.GridEX grdFolders;
+        private Janus.Windows.GridEX.GridEX grdDocuments;
     }
 }

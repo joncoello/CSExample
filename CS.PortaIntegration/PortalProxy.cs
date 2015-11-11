@@ -3,6 +3,7 @@ using CS.DomainModel.Proxies;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -17,7 +18,7 @@ namespace CS.PortaIntegration
         private readonly string _baseUrl;
         private HttpClient _client;
         private readonly string _emailAddress;
-        private  bool _loggedIn;
+        private bool _loggedIn;
         private readonly string _password;
         private readonly Guid _practiceGuid;
 
@@ -41,6 +42,21 @@ namespace CS.PortaIntegration
             _client = new HttpClient(handler);
         }
 
+        public void DownloadDocument(Document document)
+        {
+            var response = _client.GetAsync(_baseUrl + document.DownloadLink).Result;
+            response.EnsureSuccessStatusCode();
+
+            var stream = response.Content.ReadAsStreamAsync().Result;
+            var fileStream = new FileStream(@"C:\scratch\test.pdf", FileMode.Create, FileAccess.Write, FileShare.None, 8, true);
+
+            stream.CopyTo(fileStream);
+
+            stream.Close();
+            fileStream.Close();
+
+        }
+
         /// <summary>
         /// get clients
         /// </summary>
@@ -61,10 +77,45 @@ namespace CS.PortaIntegration
 
             JArray clientsJson = JArray.Parse(text);
 
-            var clients = clientsJson.Select(c => new Client() {
+            var clients = clientsJson.Select(c => new Client()
+            {
                 ClientGuid = Guid.Parse((string)c["clientGuid"]),
-                Name = (string)c["lastName"]
+                Name = (string)c["lastName"],
+                DocumentLink = (string)(c["_links"] as JArray).First(l => (string)l["rel"] == "folder")["href"]
             }).ToList();
+
+            foreach (var client in clients)
+            {
+                string folderUrl = _baseUrl + client.DocumentLink;
+                var folderResponse = _client.GetAsync(folderUrl).Result;
+                folderResponse.EnsureSuccessStatusCode();
+                var folderText = folderResponse.Content.ReadAsStringAsync().Result;
+                var folders = JArray.Parse(folderText).Select(f => new DocumentFolder()
+                {
+                    FolderGuid = Guid.Parse((string)f["folderGuid"]),
+                    Name = (string)f["name"],
+                    DocumentsLink = (string)(f["_links"] as JArray)[0]["href"]
+                }).ToList();
+                client.Folders = folders;
+
+                foreach (var folder in folders)
+                {
+                    string documentsUrl = _baseUrl + folder.DocumentsLink;
+                    var documentsResponse = _client.GetAsync(documentsUrl).Result;
+                    documentsResponse.EnsureSuccessStatusCode();
+                    var documentsText = documentsResponse.Content.ReadAsStringAsync().Result;
+
+                    var documents = JArray.Parse(documentsText).Select(d => new Document
+                    {
+                        Name = (string)d["name"],
+                        DownloadLink = (string)(d["_links"] as JArray).First(l => (string)l["rel"] == "download")["href"]
+                    }).ToList();
+
+                    folder.Documents = documents;
+
+                }
+
+            }
 
             return clients;
         }

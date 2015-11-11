@@ -1,6 +1,8 @@
-﻿using CS.DomainModel.Services;
+﻿using CS.DomainModel.Models.Portal;
+using CS.DomainModel.Services;
 using CS.PortaIntegration;
 using CS.UI.Common.FormFactory;
+using Janus.Windows.GridEX;
 using MYOB.CSSInterface;
 using System;
 using System.Collections.Generic;
@@ -21,6 +23,7 @@ namespace CS.UI.Maintenance.PortalIntegrationForm
 {
     public partial class frmPortalIntegration : Form, ICSSDisplayMainArea
     {
+        private PortalService _portalService;
 
         public frmPortalIntegration(PortalIntegration factory)
         {
@@ -50,10 +53,38 @@ namespace CS.UI.Maintenance.PortalIntegrationForm
         private void LoadData()
         {
             var portalProxy = new PortalProxy(txtUrl.Text, Guid.Parse(txtPracticeGuid.Text), txtUserName.Text, txtPassword.Text);
-            var protalService = new PortalService(portalProxy);
-            gridEX1.SetDataBinding(protalService.GetClients(), string.Empty);
-            gridEX1.RetrieveStructure();
+            _portalService = new PortalService(portalProxy);
+            grdClients.SetDataBinding(_portalService.GetClients(), string.Empty);
+            grdClients.RetrieveStructure();
         }
 
+        private void grdClients_SelectionChanged(object sender, EventArgs e)
+        {
+            var client = (grdClients.GetRow().DataRow as Client);
+            grdFolders.SetDataBinding(client.Folders, string.Empty);
+            grdFolders.RetrieveStructure();
+            //grdFolders_SelectionChanged(null, EventArgs.Empty);
+        }
+
+        private void grdFolders_SelectionChanged(object sender, EventArgs e)
+        {
+            var folder = (grdFolders.GetRow().DataRow as DocumentFolder);
+            grdDocuments.SetDataBinding(folder.Documents, string.Empty);
+            grdDocuments.RetrieveStructure();
+            grdDocuments.RowHeaders = InheritableBoolean.True;
+
+            foreach (GridEXColumn col in grdDocuments.RootTable.Columns)
+            {
+                col.EditType = EditType.NoEdit;
+                col.Selectable = false;
+            }
+
+        }
+
+        private void grdDocuments_RowDoubleClick(object sender, Janus.Windows.GridEX.RowActionEventArgs e)
+        {
+            var document = grdDocuments.GetRow().DataRow as Document;
+            _portalService.DownloadDocument(document);
+        }
     }
 }

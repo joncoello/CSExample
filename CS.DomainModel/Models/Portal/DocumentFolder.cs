@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace CS.DomainModel.Models.Portal
 {
-    public class Client
+    public class DocumentFolder
     {
-        public Guid ClientGuid { get; set; }
-        public string DocumentLink { get; set; }
-        public List<DocumentFolder> Folders { get; set; }
+        public IEnumerable<Document> Documents { get; set; }
+        public string DocumentsLink { get; set; }
+        public Guid FolderGuid { get; set; }
         public string Name { get; set; }
     }
 }

@@ -72,7 +72,6 @@
       <Name>CS.UI.Common</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="ChartWidget\ctlChartWidget.resx">
       <DependentUpon>ctlChartWidget.cs</DependentUpon>
