@@ -42,13 +42,13 @@ namespace CS.PortaIntegration
             _client = new HttpClient(handler);
         }
 
-        public void DownloadDocument(Document document)
+        public void DownloadDocument(Document document, string downloadPath)
         {
             var response = _client.GetAsync(_baseUrl + document.DownloadLink).Result;
             response.EnsureSuccessStatusCode();
 
             var stream = response.Content.ReadAsStreamAsync().Result;
-            var fileStream = new FileStream(@"C:\scratch\test.pdf", FileMode.Create, FileAccess.Write, FileShare.None, 8, true);
+            var fileStream = new FileStream(downloadPath, FileMode.Create, FileAccess.Write, FileShare.None, 8, true);
 
             stream.CopyTo(fileStream);
 

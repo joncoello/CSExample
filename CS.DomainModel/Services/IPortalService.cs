@@ -10,5 +10,6 @@ namespace CS.DomainModel.Services
     public interface IPortalService
     {
         IEnumerable<Client> GetClients();
+        void DownloadDocument(Document document, string downloadPath);
     }
 }

@@ -21,9 +21,9 @@ namespace CS.DomainModel.Services
             return _portalProxy.GetClients();
         }
 
-        public void DownloadDocument(Document document)
+        public void DownloadDocument(Document document, string downloadPath)
         {
-            _portalProxy.DownloadDocument(document);
+            _portalProxy.DownloadDocument(document, downloadPath);
         }
     }
 }

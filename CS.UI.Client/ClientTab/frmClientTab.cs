@@ -30,7 +30,7 @@ namespace CS.UI.Client.ClientTab
         public frmClientTab()
         {
             InitializeComponent();
-            this.Text = "Client Tax";
+            this.Text = "Documents Eg";
         }
 
 
@@ -61,6 +61,10 @@ namespace CS.UI.Client.ClientTab
             var docManager = new DocManager(centralDal);
             var centralGateway = new CentralGateway(centralDal);
             var client = centralGateway.FindClient(ClientId, CssContext.Instance.Host.EmployeeId);
+
+            client.Assignments.Add(new Assignment() {
+                
+            });
 
             _contactID = client.Contact.ContactId;
 
@@ -173,6 +177,23 @@ namespace CS.UI.Client.ClientTab
             messageGateway.SendMessage<StartWorkflowMessage>(msg);
 
         }
+
+        private void cmdAssignmentJobList_Click(object sender, EventArgs e)
+        {
+            var centralDal = CssContext.Instance.GetDAL(string.Empty) as DAL;
+            var gateway = new CentralGateway(centralDal);
+
+            var contact = gateway.FindContact(_contactID, CssContext.Instance.Host.EmployeeId);
+
+            var assignments = contact.Client.Assignments;
+
+            string assignmentsString = 
+                    string.Join(",", assignments.Select(a => a.Name + " (" + a.AssignmentId.ToString() + ")").ToArray());
+
+            MessageBox.Show(assignmentsString);
+
+        }
+
     }
 
 }

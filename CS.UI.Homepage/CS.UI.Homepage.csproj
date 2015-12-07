@@ -55,6 +55,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnotherWidget\ctlAnotherWidget.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AnotherWidget\ctlAnotherWidget.Designer.cs">
+      <DependentUpon>ctlAnotherWidget.cs</DependentUpon>
+    </Compile>
     <Compile Include="ChartWidget\ctlChartWidget.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -73,6 +79,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AnotherWidget\ctlAnotherWidget.resx">
+      <DependentUpon>ctlAnotherWidget.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ChartWidget\ctlChartWidget.resx">
       <DependentUpon>ctlChartWidget.cs</DependentUpon>
     </EmbeddedResource>

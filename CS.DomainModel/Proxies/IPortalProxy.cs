@@ -10,6 +10,6 @@ namespace CS.DomainModel.Proxies
     public interface IPortalProxy
     {
         IEnumerable<Client> GetClients();
-        void DownloadDocument(Document document);
+        void DownloadDocument(Document document, string downloadPath);
     }
 }

@@ -84,7 +84,22 @@ namespace CS.UI.Maintenance.PortalIntegrationForm
         private void grdDocuments_RowDoubleClick(object sender, Janus.Windows.GridEX.RowActionEventArgs e)
         {
             var document = grdDocuments.GetRow().DataRow as Document;
-            _portalService.DownloadDocument(document);
+
+            using (var sfd = new SaveFileDialog())
+            {
+
+                sfd.FileName = document.Name;
+
+                sfd.ShowDialog();
+
+                var cursor = this.Cursor;
+                this.Cursor = Cursors.WaitCursor;
+                _portalService.DownloadDocument(document, sfd.FileName);
+                this.Cursor = cursor;
+
+            }
+                            
         }
+
     }
 }

@@ -20,7 +20,7 @@ namespace CS.UI.Homepage
         {
             get
             {
-                return "Clear Sky";
+                return "CS";
             }
         }
 

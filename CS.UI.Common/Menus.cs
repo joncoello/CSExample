@@ -23,7 +23,7 @@ namespace CS.UI.Common
 
             var mnuCS = mnuMaintenance.Add("mnuCS", "CS", CSSMenuItem.MenuItemType.Group);
 
-            mnuCS.Add("mnuItem1", "Item 1", CSSMenuItem.MenuItemType.Item);
+            mnuCS.Add("mnuItem1", "Portal Integration", CSSMenuItem.MenuItemType.Item);
             mnuCS.Add("mnuItem2", "Item 2", CSSMenuItem.MenuItemType.Item);
             mnuCS.Add("mnuDataAPI", "Data API", CSSMenuItem.MenuItemType.Item);
 
