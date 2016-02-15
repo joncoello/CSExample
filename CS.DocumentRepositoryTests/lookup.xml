@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Params>
-  <ConnectionString Key="0" String_Value="Data Source=WLKCND4071HPV;Database=Central;User Id=vpmuser;Password=BelfrY18">
+  <ConnectionString Key="0" String_Value="Data Source=WLKCND4071HPV\SQL2014;Database=Central;User Id=vpmuser;Password=BelfrY18">
     <Description>Central Database On WLKCND4071HPV</Description>
   </ConnectionString>
 </Params>

@@ -1,4 +1,5 @@
-﻿using CS.DomainModel.Services;
+﻿using Central.CSSContactAPI;
+using CS.DomainModel.Services;
 using CS.TaskRepository;
 using MYOB.CSS;
 using MYOB.CSSInterface;
@@ -29,8 +30,27 @@ namespace CS.UI.Common
             sbgs[0] = new SideBarGroup();
             sbgs[0].Name = "Tasks Example";
             sbgs[0].Add("Create task", 0, CreateTask);
+            sbgs[0].Add("Create client with extra fields", 0, CreateClientWithExtraFields);
 
             return sbgs;
+        }
+
+        private void CreateClientWithExtraFields(object Sender, SideBarEventArgs e)
+        {
+
+            var centralDAL = CssContext.Instance.GetDAL(string.Empty) as DAL;
+            var centralGateway = new CentralGateway(centralDAL);
+
+            var contact = new Organisation() {
+                Name = "Extra Field Test"
+            };
+            centralGateway.Save(contact);
+            centralGateway.ConvertContactToClient(contact, "EF001", CssContext.Instance.Host.EmployeeId);
+            
+            contact = (Organisation)centralGateway.FindContact(contact.ContactId, CssContext.Instance.Host.EmployeeId);
+
+            CssContext.Instance.Host.OpenClient(contact.Client.ClientId);
+
         }
 
         private void CreateTask(object Sender, SideBarEventArgs e)
