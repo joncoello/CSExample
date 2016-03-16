@@ -25,5 +25,11 @@ namespace CS.UI.Homepage.AnotherWidget
             }
         }
 
+        public override void DefaultSettings()
+        {
+            base.DefaultSettings();
+            this.Dock = DockStyle.Fill;
+        }
+
     }
 }
