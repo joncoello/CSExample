@@ -92,5 +92,33 @@ namespace CS.UI.Maintenance.DataAPIForm
             CssContext.Instance.Host.OpenContact(i.ContactId);
 
         }
+
+        private void cmdCreatClientWithAssociation_Click(object sender, EventArgs e)
+        {            
+            // create client
+            var i1 = new Individual()
+            {
+                LastName = "Smith"
+            };
+            _gateway.Save(i1);
+            var client = _gateway.ConvertContactToClient(i1, "034757", CssContext.Instance.Host.EmployeeId);
+
+            // create contact
+            var i2 = new Individual()
+            {
+                LastName = "Jones"
+            };
+            _gateway.Save(i2);
+                        
+            //create relationship
+            var r = new Relationship() {
+                Contact1 = i1,
+                Contact2 = i2,
+                RelationshipId = 1 // spouse - from relationship table
+            };
+            _gateway.Save(r);
+            
+            CssContext.Instance.Host.OpenContact(i1.ContactId);
+        }
     }
 }
