@@ -71,6 +71,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CentralApplication.cs" />
     <Compile Include="ClientListForm\frmClientList.cs">
       <SubType>Form</SubType>
     </Compile>
