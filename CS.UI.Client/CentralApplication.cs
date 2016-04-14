@@ -11,6 +11,8 @@ namespace CS.UI.Client
 {
     public class CentralApplication : CSSApplication
     {
+        private ActionListener _listener;
+
         public CentralApplication()
         {
             this.Startup += CentralApplication_Startup;
@@ -21,14 +23,20 @@ namespace CS.UI.Client
         {
             CSSFormEventHandler.Instance.AddHandle(CSSFormEventHandler.CSSEventArea.Contact, CSSFormEventHandler.CSSFormEvent.Loading, ContactLoading);
             CSSFormEventHandler.Instance.AddHandle(CSSFormEventHandler.CSSEventArea.Contact, CSSFormEventHandler.CSSFormEvent.Closed, ContactClosed);
+
+            //StartActionListener();
+
         }
-        
+
+
         private void CentralApplication_ShutDown(object sender, EventArgs e)
         {
             CSSFormEventHandler.Instance.RemoveHandle(CSSFormEventHandler.CSSEventArea.Contact, CSSFormEventHandler.CSSFormEvent.Loading, ContactLoading);
             CSSFormEventHandler.Instance.RemoveHandle(CSSFormEventHandler.CSSEventArea.Contact, CSSFormEventHandler.CSSFormEvent.Closed, ContactClosed);
-        }
 
+            StopActionListener();
+        }
+        
         private void ContactLoading(object sender, EventArgs e)
         {
             var eArgs = e as FrameworkEventArgs;
@@ -46,7 +54,22 @@ namespace CS.UI.Client
                 MessageBox.Show($"CS plugin hooked contact {eArgs.PropertyBag.ContactId} closed");
             }
         }
-
-
+        
+        private void StartActionListener()
+        {
+            if (_listener == null)
+            {
+                _listener = new ActionListener();
+            }
+            _listener.Start();
+        }
+        private void StopActionListener()
+        {
+            if (_listener != null)
+            {
+                _listener.Stop();
+            }
+        }
+        
     }
 }
