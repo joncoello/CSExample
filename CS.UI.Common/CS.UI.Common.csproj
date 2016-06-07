@@ -32,18 +32,23 @@
   <ItemGroup>
     <Reference Include="CSS">
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\CCH ProSystem\Deploy\CSS.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="CSSContactAPI">
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\CCH ProSystem\Deploy\CSSContactAPI.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="CSSInterface">
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\CCH ProSystem\Deploy\CSSInterface.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="CSSTaskManagement">
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\CCH ProSystem\Deploy\CSSTaskManagement.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="DAL">
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\CCH ProSystem\Deploy\DAL.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

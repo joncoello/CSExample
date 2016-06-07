@@ -40,9 +40,11 @@
     <Reference Include="System.Xml" />
     <Reference Include="WKUK.CCH.Document.DocMgmt.DocManager">
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\CCH ProSystem\Deploy\WKUK.CCH.Document.DocMgmt.DocManager.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="WKUK.CCH.Document.DocMgmt.Entities">
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\CCH ProSystem\Deploy\WKUK.CCH.Document.DocMgmt.Entities.dll</HintPath>
+      <Private>False</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>

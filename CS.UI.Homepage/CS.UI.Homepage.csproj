@@ -16,7 +16,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\..\..\..\..\Program Files %28x86%29\CCH ProSystem\Deploy\</OutputPath>
+    <OutputPath>..\..\Central\v2016.2\2016.2-RTM-Release\Client\ClientFrameWork\bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -33,14 +33,17 @@
     <Reference Include="CSS, Version=2015.40.0.0, Culture=neutral, PublicKeyToken=48a770bd06677a25, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\CCH ProSystem\Deploy\CSS.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="CSSInterface, Version=2015.40.0.0, Culture=neutral, PublicKeyToken=48a770bd06677a25, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\CCH ProSystem\Deploy\CSSInterface.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="DAL, Version=2015.40.0.0, Culture=neutral, PublicKeyToken=77d77f643ec3a3e9, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\CCH ProSystem\Deploy\DAL.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
