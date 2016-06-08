@@ -1,30 +1,28 @@
 ﻿using System.Collections.Generic;
-using System.Data.Entity;
 using System.Threading.Tasks;
 using AutoMapper;
 using CS.App.Models;
 using CS.Data.Base;
 using CS.Data.Context;
-using CS.Data.Model;
 using CS.Repositories.ClientRepository;
 
 namespace CS.Accessors.ClientAccessor
 {
     public class ClientAccessor : IClientAccessor
     {
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly IUnitOfWork<ClientContext> _unitOfWork;
         private readonly IMapper _mapper;
         private readonly IClientRepository _repository;
 
-        public ClientAccessor(IMapper mapper)
-        {
-            _mapper = mapper;
-            _unitOfWork = new UnitOfWork<ClientContext>();
-            _repository = new ClientRepository(_unitOfWork);
+        //public ClientAccessor(IMapper mapper)
+        //{
+        //    _mapper = mapper;
+        //    _unitOfWork = new UnitOfWork<ClientContext>();
+        //    _repository = new ClientRepository(_unitOfWork);
             
-        }
+        //}
 
-        public ClientAccessor(IUnitOfWork unitOfWork, IClientRepository repository, IMapper mapper)
+        public ClientAccessor(IUnitOfWork<ClientContext> unitOfWork, IClientRepository repository, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
@@ -57,4 +55,5 @@ namespace CS.Accessors.ClientAccessor
         Task<ClientSupplierAppModel> GetClientById(int clientId);
         void Save();
     }
+
 }

@@ -6,7 +6,7 @@ using CS.Data.Model;
 
 namespace CS.FakesForTesting
 {
-    public class FakeClientContext : BaseContext<FakeClientContext>, IClientContext
+    public class FakeClientContext : BaseContext<FakeClientContext>, IClientContext<FakeClientContext>
     {
         public void SetModified(object entity)
         {

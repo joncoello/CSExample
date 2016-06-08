@@ -70,6 +70,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CS.Client.CentralApi", "CS.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CS.Client.CentralApi.Tests", "CS.Client.CentralApi.Tests\CS.Client.CentralApi.Tests.csproj", "{0D949AD1-8E00-44F3-A1E6-4E3FC4C84AA5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CS.Common", "CS.Common", "{3DD4B8F8-03E7-423F-8356-E05BEB2C991A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CS.Common.Autofac", "CS.Common.AutofacRegistration\CS.Common.Autofac.csproj", "{80361EAB-4E73-4150-B780-A6E5A370070E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -180,6 +184,10 @@ Global
 		{0D949AD1-8E00-44F3-A1E6-4E3FC4C84AA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0D949AD1-8E00-44F3-A1E6-4E3FC4C84AA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0D949AD1-8E00-44F3-A1E6-4E3FC4C84AA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80361EAB-4E73-4150-B780-A6E5A370070E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80361EAB-4E73-4150-B780-A6E5A370070E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80361EAB-4E73-4150-B780-A6E5A370070E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80361EAB-4E73-4150-B780-A6E5A370070E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -200,5 +208,6 @@ Global
 		{5C6D9E94-D04F-436C-939A-CAD83FC4B969} = {E2BBA276-0D83-429E-9D69-CF4C0D33141F}
 		{806B49D4-A433-4F58-8F81-E4060FFAE316} = {F188A96F-AFE9-4368-8FD8-5F617BB6713A}
 		{0D949AD1-8E00-44F3-A1E6-4E3FC4C84AA5} = {417F92FF-C3A8-4E7D-9DCF-94D1EE555621}
+		{80361EAB-4E73-4150-B780-A6E5A370070E} = {3DD4B8F8-03E7-423F-8356-E05BEB2C991A}
 	EndGlobalSection
 EndGlobal

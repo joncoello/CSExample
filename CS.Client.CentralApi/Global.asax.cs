@@ -7,7 +7,10 @@ namespace CS.Client.CentralApi
         protected void Application_Start()
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
-            AutoMapperWebConfiguration.Configure();
+            AutoMapperConfig.Configure();
+            AutofacConfig.Register();
         }
+
+        
     }
 }

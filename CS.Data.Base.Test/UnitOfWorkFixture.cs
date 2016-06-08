@@ -12,7 +12,7 @@ namespace CS.Data.Base.Test
         {
             var uow = new UnitOfWork<FakeClientContext>();
 
-            Assert.IsInstanceOf<IContext>(uow.Context);
+            Assert.IsInstanceOf<IContext<FakeClientContext>>(uow.Context);
         }
 
         [Test]

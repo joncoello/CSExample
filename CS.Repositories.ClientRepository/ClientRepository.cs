@@ -12,10 +12,10 @@ namespace CS.Repositories.ClientRepository
 {
     public class ClientRepository : IClientRepository
     {
-        private readonly IClientContext _context;
-        public ClientRepository(IUnitOfWork unitOfWork)
+        private readonly IClientContext<ClientContext> _context;
+        public ClientRepository(IUnitOfWork<ClientContext> unitOfWork)
         {
-            _context = unitOfWork.Context as IClientContext;
+            _context = unitOfWork.Context as IClientContext<ClientContext>;
         }
 
         public void Dispose()

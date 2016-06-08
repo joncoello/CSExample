@@ -7,7 +7,7 @@ using CS.Data.Model;
 
 namespace CS.Data.Context
 {
-    public interface IClientContext : IContext
+    public interface IClientContext<T> : IContext<T> where T : class
     {
         IDbSet<ClientSupplier> ClientSuppliers { get; set; }
         IDbSet<ClientSupplierType> ClientSupplierTypes { get; set; }
@@ -22,7 +22,7 @@ namespace CS.Data.Context
             bool? includeDraft);
     }
 
-    public partial class ClientContext : BaseContext<ClientContext>, IClientContext
+    public partial class ClientContext : BaseContext<ClientContext>, IClientContext<ClientContext>
     {   
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

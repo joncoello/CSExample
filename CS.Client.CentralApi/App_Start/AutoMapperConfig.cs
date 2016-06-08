@@ -2,7 +2,7 @@
 
 namespace CS.Client.CentralApi
 {
-    public static class AutoMapperWebConfiguration
+    public static class AutoMapperConfig
     {
         public static MapperConfiguration Config;
         public static void Configure()

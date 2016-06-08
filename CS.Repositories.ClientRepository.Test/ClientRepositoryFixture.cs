@@ -1,18 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Linq;
-using CS.Data.Base;
-using CS.Data.Model;
-using CS.FakesForTesting;
-using NUnit.Framework;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
-using System.Linq.Expressions;
-using System.Threading.Tasks;
-using CS.Data.Context;
-using Moq;
+﻿using NUnit.Framework;
 
 namespace CS.Repositories.ClientRepository.Test
 {

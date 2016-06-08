@@ -12,12 +12,12 @@ namespace CS.Client.CentralApi.Controllers
         private readonly IClientAccessor _clientAccessor;
         private readonly IMapper _mapper;
 
-        public ClientController()
-        {
-            _mapper = AutoMapperWebConfiguration.Config.CreateMapper();
-            _clientAccessor = new ClientAccessor(_mapper);
+        //public ClientController()
+        //{
+        //    _mapper = AutoMapperConfig.Config.CreateMapper();
+        //    _clientAccessor = new ClientAccessor(_mapper);
 
-        }
+        //}
     public ClientController(IClientAccessor accessor, IMapper mapper)
         {
             _clientAccessor = accessor;

@@ -1,16 +1,16 @@
 namespace CS.Data.Base
 {
-    public class UnitOfWork<TContext> : IUnitOfWork
-        where TContext : IContext, new()
+    public class UnitOfWork<TContext> : IUnitOfWork<TContext>
+        where TContext : class, IContext<TContext>, new()
     {
-        private readonly IContext _context;
+        private readonly IContext<TContext> _context;
 
         public UnitOfWork()
         {
             _context = new TContext();
         }
 
-        public UnitOfWork(IContext context)
+        public UnitOfWork(IContext<TContext> context)
         {
             _context = context;
         }
@@ -19,7 +19,7 @@ namespace CS.Data.Base
             return _context.SaveChanges();
         }
 
-        public IContext Context => (TContext)_context;
+        public IContext<TContext> Context => (TContext)_context;
 
         public void Dispose()
         {
