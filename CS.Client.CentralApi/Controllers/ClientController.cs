@@ -12,12 +12,6 @@ namespace CS.Client.CentralApi.Controllers
         private readonly IClientAccessor _clientAccessor;
         private readonly IMapper _mapper;
 
-        //public ClientController()
-        //{
-        //    _mapper = AutoMapperConfig.Config.CreateMapper();
-        //    _clientAccessor = new ClientAccessor(_mapper);
-
-        //}
     public ClientController(IClientAccessor accessor, IMapper mapper)
         {
             _clientAccessor = accessor;
@@ -35,21 +29,6 @@ namespace CS.Client.CentralApi.Controllers
             if (client == null) return NotFound();
 
             return Ok(client);
-        }
-
-        // POST api/<controller>
-        public void Post([FromBody]string value)
-        {
-        }
-
-        // PUT api/<controller>/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/<controller>/5
-        public void Delete(int id)
-        {
         }
     }
 }

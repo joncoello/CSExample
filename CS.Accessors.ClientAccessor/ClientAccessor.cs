@@ -14,14 +14,6 @@ namespace CS.Accessors.ClientAccessor
         private readonly IMapper _mapper;
         private readonly IClientRepository _repository;
 
-        //public ClientAccessor(IMapper mapper)
-        //{
-        //    _mapper = mapper;
-        //    _unitOfWork = new UnitOfWork<ClientContext>();
-        //    _repository = new ClientRepository(_unitOfWork);
-            
-        //}
-
         public ClientAccessor(IUnitOfWork<ClientContext> unitOfWork, IClientRepository repository, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
@@ -48,12 +40,4 @@ namespace CS.Accessors.ClientAccessor
             _unitOfWork.Save();
         }
     }
-
-    public interface IClientAccessor
-    {
-        Task<IEnumerable<ClientSupplierAppModel>> GetAllClientsAsync();
-        Task<ClientSupplierAppModel> GetClientById(int clientId);
-        void Save();
-    }
-
 }

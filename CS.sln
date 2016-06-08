@@ -74,6 +74,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CS.Common", "CS.Common", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CS.Common.Autofac", "CS.Common.AutofacRegistration\CS.Common.Autofac.csproj", "{80361EAB-4E73-4150-B780-A6E5A370070E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CS.Common.AutoMapper", "CS.Common.AutoMapper\CS.Common.AutoMapper.csproj", "{21EF7192-F99A-448E-9138-E1D450D31C04}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -188,6 +190,10 @@ Global
 		{80361EAB-4E73-4150-B780-A6E5A370070E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{80361EAB-4E73-4150-B780-A6E5A370070E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{80361EAB-4E73-4150-B780-A6E5A370070E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21EF7192-F99A-448E-9138-E1D450D31C04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21EF7192-F99A-448E-9138-E1D450D31C04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21EF7192-F99A-448E-9138-E1D450D31C04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21EF7192-F99A-448E-9138-E1D450D31C04}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -209,5 +215,6 @@ Global
 		{806B49D4-A433-4F58-8F81-E4060FFAE316} = {F188A96F-AFE9-4368-8FD8-5F617BB6713A}
 		{0D949AD1-8E00-44F3-A1E6-4E3FC4C84AA5} = {417F92FF-C3A8-4E7D-9DCF-94D1EE555621}
 		{80361EAB-4E73-4150-B780-A6E5A370070E} = {3DD4B8F8-03E7-423F-8356-E05BEB2C991A}
+		{21EF7192-F99A-448E-9138-E1D450D31C04} = {3DD4B8F8-03E7-423F-8356-E05BEB2C991A}
 	EndGlobalSection
 EndGlobal

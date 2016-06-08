@@ -18,14 +18,9 @@ namespace CS.Repositories.ClientRepository
             _context = unitOfWork.Context as IClientContext<ClientContext>;
         }
 
-        public void Dispose()
-        {
-        }
-
         public async Task<IEnumerable<ClientSupplier>> AllAsync()
         {
             var result =  await _context.ClientSuppliers.ToListAsync();
-
             return result; 
         } 
 
@@ -77,6 +72,10 @@ namespace CS.Repositories.ClientRepository
                 includeClosed, 
                 businessType, 
                 includeDraft).ToList();
+        }
+
+        public void Dispose()
+        {
         }
     }
 }
