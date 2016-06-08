@@ -31,50 +31,44 @@ namespace CS.Client.CentralApi.Tests
         [Test]
         public void GetClients_ShouldReturnAllClients()
         {
-            //arrange
-            //var expectedResult = new []
-            //{
-            //    new ClientSupplierAppModel { ClientID = 1212} 
-            //};
-            //_accessor.Setup(x => x.GetAllClientsAsync()).Returns(() =>new Task<IEnumerable<ClientSupplierAppModel>>(() => expectedResult));
-
             //act
-            var actualResult = _clientController.GetClientsAsync().Result;
+            var actualResult = _clientController.GetClientsAsync().Result.ToList();
 
             //assert
             Assert.IsNotNull(actualResult);
             Assert.IsInstanceOf<IEnumerable<ClientSupplierAppModel>>(actualResult);
             Assert.AreEqual(2, actualResult.Count());
+            Assert.AreEqual(1,actualResult[0].ClientID );
+            Assert.AreEqual(2,actualResult[1].ClientID );
+            
         }
 
         [Test]
-        public async Task GetClientReturnsNotfound()
+        public void GetClient_ShouldReturn404Notfound()
         {
             //arrange
-            //_accessor.Setup(x => x.GetClientById(It.IsAny<int>())).Returns(() => null);
+            var expectedResult = new ClientSupplierAppModel { ClientID = 1 };
 
+            Mock<IClientAccessor> ac = new Mock<IClientAccessor>();
+            ac.Setup(x => x.GetClientById(It.IsAny<int>())).ReturnsAsync(expectedResult);
             //act
-            var actualResult = await _clientController.GetClientAsync(2222);
+            var actualResult = _clientController.GetClientAsync(2222).Result;
 
             //assert
-            //Assert.IsNotNull(actualResult);
+            Assert.IsNotNull(actualResult);
             Assert.IsInstanceOf<NotFoundResult>(actualResult);
         }
 
         [Test]
-        public void GetClientReturnsClientObject()
+        public async Task GetClient_ShouldReturnClientObject()
         {
-            //arrange
-            //var expectedResult = new ClientSupplierAppModel { ClientID = 1212};
-            //_accessor.Setup(x => x.GetAllClientsAsync()).Returns(
-            //    () => new Task<ClientSupplierAppModel>(() => expectedResult));
+            //act
+            var actualResult = await _clientController.GetClientAsync(1) 
+                as OkNegotiatedContentResult<ClientSupplierAppModel>;
 
-            ////act
-            //var actualResult = _clientController.GetClientAsync(1212).Result as OkNegotiatedContentResult<ClientSupplierAppModel>;
-
-            ////assert
-            //Assert.IsNotNull(actualResult);
-            //Assert.AreEqual(expectedResult.ClientID, actualResult.Content.ClientID);
+            //assert
+            Assert.IsNotNull(actualResult);
+            Assert.AreEqual(1, actualResult.Content.ClientID);
         }
 
     }

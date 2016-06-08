@@ -17,9 +17,9 @@ namespace CS.FakesForTesting
             return Task.FromResult(model);
         }
 
-        public Task<ClientSupplierAppModel> GetClientById(int clientId)
+        public async Task<ClientSupplierAppModel> GetClientById(int clientId)
         {
-            return null;
+            return clientId == 1 ? new ClientSupplierAppModel {ClientID = 1} : null;
         }
 
         public void Save()
