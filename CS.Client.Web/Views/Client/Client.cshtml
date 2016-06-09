@@ -1,0 +1,46 @@
+﻿@model CS.Client.Web.Models.ClientViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>GetClient</title>
+</head>
+<body>
+    <div>
+        <h4>ClientViewModel</h4>
+        <hr />
+        <table>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.ClientID)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.ClientID)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.ContactID)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.ContactID)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.ClientCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.ClientCode)
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

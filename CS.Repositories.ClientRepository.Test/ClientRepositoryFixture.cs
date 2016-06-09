@@ -1,52 +1,68 @@
-﻿using NUnit.Framework;
+﻿using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using System.Threading.Tasks;
+using CS.Data.Base;
+using CS.Data.Context;
+using CS.Data.Model;
+using CS.FakesForTesting;
+using Moq;
+using NUnit.Framework;
 
 namespace CS.Repositories.ClientRepository.Test
 {
     [TestFixture]
     public class ClientRepositoryFixture
     {
-        private ClientRepository _repository;
+        //private ClientRepository _repository;
 
-        [SetUp]
-        public void Init()
-        {
-            //_repository = new ClientRepository(new UnitOfWork<FakeClientContext>());
-        }
+        //[SetUp]
+        //public void Init()
+        //{
+        //    //_repository = new ClientRepository(new UnitOfWork<FakeClientContext>());
+        //}
 
         //[Test]
-        //public async Task AllAsyncShouldReturnAllClients()
+        //public void AllAsyncShouldReturnAllClients()
         //{
-        //    var data = new List<ClientSupplier>
-        //     {
-        //         new ClientSupplier { ClientID = 1,},
-        //         new ClientSupplier { ClientID = 2 },
-        //         new ClientSupplier { ClientID = 3 }
-        //     }.AsQueryable();
+        //    #region comment
+        //    //var data = new List<ClientSupplier>
+        //    // {
+        //    //     new ClientSupplier { ClientID = 1,},
+        //    //     new ClientSupplier { ClientID = 2 },
+        //    //     new ClientSupplier { ClientID = 3 }
+        //    // }.AsQueryable();
 
-        //    Mock<IDbSet<ClientSupplier>> dbset = new Mock<IDbSet<ClientSupplier>>();
+        //    //Mock<IDbSet<ClientSupplier>> dbset = new Mock<IDbSet<ClientSupplier>>();
 
-        //    dbset.Setup(m => m.Provider).Returns(data.Provider);
-        //    dbset.Setup(m => m.Expression).Returns(data.Expression);
-        //    dbset.Setup(m => m.ElementType).Returns(data.ElementType);
-        //    dbset.Setup(m => m.GetEnumerator()).Returns(data.GetEnumerator());
+        //    //dbset.Setup(m => m.Provider).Returns(data.Provider);
+        //    //dbset.Setup(m => m.Expression).Returns(data.Expression);
+        //    //dbset.Setup(m => m.ElementType).Returns(data.ElementType);
+        //    //dbset.Setup(m => m.GetEnumerator()).Returns(data.GetEnumerator());
 
 
-        //    //Mock<IClientContext> context = new Mock<IClientContext>();
+        //    //Mock<IClientContext<ClientContext>> context = new Mock<IClientContext<ClientContext>>();
         //    //context.Setup(x => x.ClientSuppliers).Returns(dbset.Object);
+        //    #endregion
+
 
         //    var fake = new FakeClientContext();
         //    //fake.ClientSuppliers = dbset.Object;
-        //    fake.ClientSuppliers.Add(new ClientSupplier {ClientID = 1212});
+        //    fake.ClientSuppliers.Add(new ClientSupplier { ClientID = 1212 });
 
-        //    _repository = new ClientRepository(new UnitOfWork<FakeClientContext>(fake));
+        //    Mock<IUnitOfWork<ClientContext>> uow = new Mock<IUnitOfWork<ClientContext>>();
+        //    uow.Setup(x => x.Context).Returns(fake);
 
-        //    var result =  await _repository.AllAsync() as List<ClientSupplier>;
+        //    //_repository = new ClientRepository(new UnitOfWork<ClientContext>(context.Object));
+        //    _repository = new ClientRepository(uow.Object);
 
-        //    Mock<IClientContext> fakedbMock = new Mock<IClientContext>();
-        //    fakedbMock.Setup(x=>x.ClientSuppliers).Returns(()=> new FakeDbset())
+        //    var result = _repository.AllAsync().Result.ToList();
 
+        //    //Mock<IClientContext<>> fakedbMock = new Mock<IClientContext>();
+        //    //fakedbMock.Setup(x => x.ClientSuppliers).Returns(() => new FakeDbset())
+            
         //    Assert.IsNotNull(result);
-        //    Assert.AreEqual(1,result.Count);
+        //    Assert.AreEqual(1, result.Count);
         //}
     }
 

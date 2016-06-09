@@ -6,7 +6,7 @@ using CS.Data.Model;
 
 namespace CS.FakesForTesting
 {
-    public class FakeClientContext : BaseContext<FakeClientContext>, IClientContext<FakeClientContext>
+    public class FakeClientContext : ClientContext
     {
         public void SetModified(object entity)
         {
@@ -18,9 +18,7 @@ namespace CS.FakesForTesting
             throw new System.NotImplementedException();
         }
 
-        public IDbSet<ClientSupplier> ClientSuppliers {
-            get ; 
-            set; }
+        public IDbSet<ClientSupplier> ClientSuppliers {get;set; }
         public IDbSet<ClientSupplierType> ClientSupplierTypes { get; set; }
         public IDbSet<ClientVATType> ClientVATTypes { get; set; }
 

@@ -8,7 +8,7 @@ namespace CS.Data.Base
 {
     public interface IEntityRepository<T> : IDisposable
     {
-        Task<IEnumerable<T>> AllAsync();
+        Task<List<T>> AllAsync();
         IQueryable<T> AllIncluding(params Expression<Func<T, object>>[] includeProperties);
         Task<T> Find(int id);
         void InsertOrUpdate(T entity);

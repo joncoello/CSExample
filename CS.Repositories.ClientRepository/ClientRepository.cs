@@ -18,9 +18,9 @@ namespace CS.Repositories.ClientRepository
             _context = unitOfWork.Context as IClientContext<ClientContext>;
         }
 
-        public async Task<IEnumerable<ClientSupplier>> AllAsync()
+        public Task<List<ClientSupplier>> AllAsync()
         {
-            var result =  await _context.ClientSuppliers.ToListAsync();
+            var result =  _context.ClientSuppliers.ToListAsync();
             return result; 
         } 
 

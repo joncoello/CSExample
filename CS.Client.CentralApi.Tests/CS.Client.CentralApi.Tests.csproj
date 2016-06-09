@@ -96,9 +96,9 @@
       <Project>{5C6D9E94-D04F-436C-939A-CAD83FC4B969}</Project>
       <Name>CS.App.Models</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CS.Client.CentralApi\CS.Client.CentralApi.csproj">
+    <ProjectReference Include="..\CS.Api.CentralApi\CS.Api.CentralApi.csproj">
       <Project>{806B49D4-A433-4F58-8F81-E4060FFAE316}</Project>
-      <Name>CS.Client.CentralApi</Name>
+      <Name>CS.Api.CentralApi</Name>
     </ProjectReference>
     <ProjectReference Include="..\CS.FakesForTesting\CS.FakesForTesting.csproj">
       <Project>{DE6EF81D-3380-41C6-9AD0-1EF69D1B33D1}</Project>
