@@ -2,7 +2,7 @@ using System;
 
 namespace CS.Data.Base
 {
-    public interface IContext<T> : IDisposable where T : class
+    public interface IContext<T> : IDisposable
     {
         int SaveChanges();
         void SetModified(object entity);

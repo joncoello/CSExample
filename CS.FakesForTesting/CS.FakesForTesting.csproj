@@ -51,6 +51,11 @@
   <ItemGroup>
     <Compile Include="FakeClientAccessor.cs" />
     <Compile Include="FakeClientContext.cs" />
+    <Compile Include="FakeClientDbSet.cs" />
+    <Compile Include="FakeDbAsyncEnumerable.cs" />
+    <Compile Include="FakeDbAsyncEnumerator.cs" />
+    <Compile Include="FakeDbAsyncQueryProvider.cs" />
+    <Compile Include="FakeDbSet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,124 +1,94 @@
-﻿using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using CS.Data.Base;
 using CS.Data.Context;
 using CS.Data.Model;
 using CS.FakesForTesting;
 using Moq;
 using NUnit.Framework;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
+using System.Threading.Tasks;
 
 namespace CS.Repositories.ClientRepository.Test
 {
     [TestFixture]
     public class ClientRepositoryFixture
     {
-        //private ClientRepository _repository;
+        private ClientRepository _repository;
 
-        //[SetUp]
-        //public void Init()
-        //{
-        //    //_repository = new ClientRepository(new UnitOfWork<FakeClientContext>());
-        //}
+        [SetUp]
+        public void Init()
+        {
+            //_repository = new ClientRepository(new UnitOfWork<FakeClientContext>());
+        }
 
-        //[Test]
-        //public void AllAsyncShouldReturnAllClients()
-        //{
-        //    #region comment
-        //    //var data = new List<ClientSupplier>
-        //    // {
-        //    //     new ClientSupplier { ClientID = 1,},
-        //    //     new ClientSupplier { ClientID = 2 },
-        //    //     new ClientSupplier { ClientID = 3 }
-        //    // }.AsQueryable();
+        [Test]
+        public async Task AllAsync_ShouldReturnAllClients_UsingFakes()
+        {
+            var context = new FakeClientContext();
 
-        //    //Mock<IDbSet<ClientSupplier>> dbset = new Mock<IDbSet<ClientSupplier>>();
+            context.ClientSuppliers.Add(new ClientSupplier { ClientID = 1 });
+            context.ClientSuppliers.Add(new ClientSupplier { ClientID = 2 });
+            context.ClientSuppliers.Add(new ClientSupplier { ClientID = 3 });
 
-        //    //dbset.Setup(m => m.Provider).Returns(data.Provider);
-        //    //dbset.Setup(m => m.Expression).Returns(data.Expression);
-        //    //dbset.Setup(m => m.ElementType).Returns(data.ElementType);
-        //    //dbset.Setup(m => m.GetEnumerator()).Returns(data.GetEnumerator());
+            var uow =
+                new Mock<IUnitOfWork<ClientContext>>();
+            uow.Setup(x => x.Context).Returns(context);
 
+            _repository = new ClientRepository(uow.Object);
 
-        //    //Mock<IClientContext<ClientContext>> context = new Mock<IClientContext<ClientContext>>();
-        //    //context.Setup(x => x.ClientSuppliers).Returns(dbset.Object);
-        //    #endregion
+            var result = await _repository.AllAsync();
 
+            Assert.IsNotNull(result);
+            Assert.AreEqual(3, result.Count);
+            Assert.AreEqual(1, result[0].ClientID);
+            Assert.AreEqual(2, result[1].ClientID);
+            Assert.AreEqual(3, result[2].ClientID);
+        }
 
-        //    var fake = new FakeClientContext();
-        //    //fake.ClientSuppliers = dbset.Object;
-        //    fake.ClientSuppliers.Add(new ClientSupplier { ClientID = 1212 });
+        [Test]
+        public async Task AllAsync_ShouldReturnAllClients_UsingMoq()
+        {
 
-        //    Mock<IUnitOfWork<ClientContext>> uow = new Mock<IUnitOfWork<ClientContext>>();
-        //    uow.Setup(x => x.Context).Returns(fake);
+            var data = new List<ClientSupplier>
+            {
+                new ClientSupplier { ClientID = 1 },
+                new ClientSupplier { ClientID = 2 },
+                new ClientSupplier { ClientID = 3 }
+            }.AsQueryable();
 
-        //    //_repository = new ClientRepository(new UnitOfWork<ClientContext>(context.Object));
-        //    _repository = new ClientRepository(uow.Object);
+            var mockSet = new Mock<DbSet<ClientSupplier>>();
+            mockSet.As<IDbAsyncEnumerable<ClientSupplier>>()
+                .Setup(m => m.GetAsyncEnumerator())
+                .Returns(new FakeDbAsyncEnumerator<ClientSupplier>(data.GetEnumerator()));
 
-        //    var result = _repository.AllAsync().Result.ToList();
+            mockSet.As<IQueryable<ClientSupplier>>()
+                .Setup(m => m.Provider)
+                .Returns(new FakeDbAsyncQueryProvider<ClientSupplier>(data.Provider));
 
-        //    //Mock<IClientContext<>> fakedbMock = new Mock<IClientContext>();
-        //    //fakedbMock.Setup(x => x.ClientSuppliers).Returns(() => new FakeDbset())
-            
-        //    Assert.IsNotNull(result);
-        //    Assert.AreEqual(1, result.Count);
-        //}
+            mockSet.As<IQueryable<ClientSupplier>>().Setup(m => m.Expression).Returns(data.Expression);
+            mockSet.As<IQueryable<ClientSupplier>>().Setup(m => m.ElementType).Returns(data.ElementType);
+            mockSet.As<IQueryable<ClientSupplier>>().Setup(m => m.GetEnumerator()).Returns(data.GetEnumerator());
+
+            var mockContext = new Mock<IClientContext<ClientContext>>();
+            mockContext.Setup(c => c.ClientSuppliers).Returns(mockSet.Object);
+
+            var uow =
+               new Mock<IUnitOfWork<ClientContext>>();
+            uow.Setup(x => x.Context).Returns(mockContext.Object);
+
+            _repository = new ClientRepository(uow.Object);
+
+            var result = await _repository.AllAsync();
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(3, result.Count);
+            Assert.AreEqual(1, result[0].ClientID);
+            Assert.AreEqual(2, result[1].ClientID);
+            Assert.AreEqual(3, result[2].ClientID);
+        }
     }
 
-    //class FakeDbset : IDbSet<ClientSupplier>
-    //{
-    //    public IEnumerator<ClientSupplier> GetEnumerator()
-    //    {
-    //        throw new System.NotImplementedException();
-    //    }
-
-    //    IEnumerator IEnumerable.GetEnumerator()
-    //    {
-    //        throw new System.NotImplementedException();
-    //    }
-
-    //    public Expression Expression { get; }
-    //    public Type ElementType { get; }
-    //    public IQueryProvider Provider { get; }
-    //    public ClientSupplier Find(params object[] keyValues)
-    //    {
-    //        throw new System.NotImplementedException();
-    //    }
-
-    //    public ClientSupplier Add(ClientSupplier entity)
-    //    {
-    //        throw new System.NotImplementedException();
-    //    }
-
-    //    public ClientSupplier Remove(ClientSupplier entity)
-    //    {
-    //        throw new System.NotImplementedException();
-    //    }
-
-    //    public ClientSupplier Attach(ClientSupplier entity)
-    //    {
-    //        throw new System.NotImplementedException();
-    //    }
-
-    //    public ClientSupplier Create()
-    //    {
-    //        throw new System.NotImplementedException();
-    //    }
-
-    //    public TDerivedEntity Create<TDerivedEntity>() where TDerivedEntity : class, ClientSupplier
-    //    {
-    //        throw new System.NotImplementedException();
-    //    }
-
-    //    public ObservableCollection<> Local { get; }
-
-    //    ObservableCollection<ClientSupplier> IDbSet<ClientSupplier>.Local
-    //    {
-    //        get
-    //        {
-    //            throw new NotImplementedException();
-    //        }
-    //    }
-    //}
+   
 }

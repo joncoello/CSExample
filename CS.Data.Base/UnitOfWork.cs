@@ -1,6 +1,6 @@
 namespace CS.Data.Base
 {
-    public class UnitOfWork<TContext> : IUnitOfWork<TContext>
+    public class UnitOfWork<TContext> : IUnitOfWork<TContext> 
         where TContext : class, IContext<TContext>, new()
     {
         private readonly IContext<TContext> _context;
