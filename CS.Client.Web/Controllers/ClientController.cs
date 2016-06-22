@@ -49,5 +49,10 @@ namespace CS.Client.Web.Controllers
             }
             return View(client);
         }
+
+        public ActionResult Tenant(string id)
+        {
+            return Content($"The tenant id is {id}");
+        }
     }
 }
