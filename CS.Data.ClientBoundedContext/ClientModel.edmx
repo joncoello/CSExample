@@ -1,0 +1,455 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CS.Data.Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ClientSupplier">
+          <Key>
+            <PropertyRef Name="ClientID" />
+          </Key>
+          <Property Name="ClientID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContactID" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="smalldatetime" Nullable="false" />
+          <Property Name="ParentClientID" Type="int" />
+          <Property Name="DefaultRecoveryRate" Type="float" Nullable="false" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="1000" />
+          <Property Name="OfficeID" Type="int" Nullable="false" />
+          <Property Name="DepartmentID" Type="int" Nullable="false" />
+          <Property Name="ClientCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PeriodEndDate" Type="smalldatetime" />
+          <Property Name="Vattable" Type="bit" Nullable="false" />
+          <Property Name="CliFileID" Type="int" Nullable="false" />
+          <Property Name="Internal" Type="bit" Nullable="false" />
+          <Property Name="ClientVATTypeID" Type="tinyint" Nullable="false" />
+          <Property Name="ZID" Type="int" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="DateCreated" Type="smalldatetime" />
+          <Property Name="DefaultCurrency" Type="int" />
+          <Property Name="ClientSupplierType" Type="tinyint" Nullable="false" />
+          <Property Name="TermsTypeID" Type="tinyint" />
+          <Property Name="TermsDay" Type="smallint" />
+          <Property Name="PaymentTypeID" Type="smallint" />
+          <Property Name="CreditLimit" Type="money" />
+          <Property Name="DefaultNominalID" Type="smallint" />
+          <Property Name="AccountStatusID" Type="smallint" />
+          <Property Name="BankAccountName" Type="nvarchar" MaxLength="50" />
+          <Property Name="BankAccountNum" Type="nvarchar" MaxLength="50" />
+          <Property Name="BankSortCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="BACSRef" Type="nvarchar" MaxLength="50" />
+          <Property Name="ApprovalEmpID" Type="int" />
+          <Property Name="DefaultContactAssoc" Type="int" />
+          <Property Name="Closed" Type="smalldatetime" />
+          <Property Name="CompanyRegistrationNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="CompanyTaxReference" Type="nvarchar" MaxLength="50" />
+          <Property Name="RowGuid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ClientClosedReasonId" Type="int" />
+          <Property Name="Draft" Type="bit" Nullable="false" />
+          <Property Name="ApprovedBy" Type="int" />
+          <Property Name="ReasonWonId" Type="int" />
+        </EntityType>
+        <EntityType Name="ClientSupplierType">
+          <Key>
+            <PropertyRef Name="ClientSupplierTypeID" />
+          </Key>
+          <Property Name="ClientSupplierTypeID" Type="tinyint" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ClientVATType">
+          <Key>
+            <PropertyRef Name="ClientVATTypeID" />
+          </Key>
+          <Property Name="ClientVATTypeID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ShortName" Type="varchar" MaxLength="4" />
+          <Property Name="LongName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="VatRateId" Type="int" />
+          <Property Name="DiscountMultiplier" Type="smallmoney" Nullable="false" />
+          <Property Name="ClientSupplierType" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Client_ClientVATType">
+          <End Role="ClientVATType" Type="Self.ClientVATType" Multiplicity="1" />
+          <End Role="ClientSupplier" Type="Self.ClientSupplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientVATType">
+              <PropertyRef Name="ClientVATTypeID" />
+            </Principal>
+            <Dependent Role="ClientSupplier">
+              <PropertyRef Name="ClientVATTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientSupplier_ClientSupplierType">
+          <End Role="ClientSupplierType" Type="Self.ClientSupplierType" Multiplicity="1" />
+          <End Role="ClientSupplier" Type="Self.ClientSupplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientSupplierType">
+              <PropertyRef Name="ClientSupplierTypeID" />
+            </Principal>
+            <Dependent Role="ClientSupplier">
+              <PropertyRef Name="ClientSupplierType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientSupplier_ParentClientID">
+          <End Role="ClientSupplier" Type="Self.ClientSupplier" Multiplicity="0..1" />
+          <End Role="ClientSupplier1" Type="Self.ClientSupplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientSupplier">
+              <PropertyRef Name="ClientID" />
+            </Principal>
+            <Dependent Role="ClientSupplier1">
+              <PropertyRef Name="ParentClientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientVat_ClientSupplierType">
+          <End Role="ClientSupplierType" Type="Self.ClientSupplierType" Multiplicity="1" />
+          <End Role="ClientVATType" Type="Self.ClientVATType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientSupplierType">
+              <PropertyRef Name="ClientSupplierTypeID" />
+            </Principal>
+            <Dependent Role="ClientVATType">
+              <PropertyRef Name="ClientSupplierType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="SH_Search_Clients" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SearchText" Type="nvarchar" Mode="In" />
+          <Parameter Name="EmployeeId" Type="int" Mode="In" />
+          <Parameter Name="SearchOnly" Type="int" Mode="In" />
+          <Parameter Name="IncludeClosed" Type="int" Mode="In" />
+          <Parameter Name="BusinessType" Type="int" Mode="In" />
+          <Parameter Name="IncludeDraft" Type="bit" Mode="In" />
+        </Function>
+        <EntityContainer Name="CSDataModelStoreContainer">
+          <EntitySet Name="ClientSupplier" EntityType="Self.ClientSupplier" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClientSupplierType" EntityType="Self.ClientSupplierType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClientVATType" EntityType="Self.ClientVATType" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Client_ClientVATType" Association="Self.FK_Client_ClientVATType">
+            <End Role="ClientVATType" EntitySet="ClientVATType" />
+            <End Role="ClientSupplier" EntitySet="ClientSupplier" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientSupplier_ClientSupplierType" Association="Self.FK_ClientSupplier_ClientSupplierType">
+            <End Role="ClientSupplierType" EntitySet="ClientSupplierType" />
+            <End Role="ClientSupplier" EntitySet="ClientSupplier" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientSupplier_ParentClientID" Association="Self.FK_ClientSupplier_ParentClientID">
+            <End Role="ClientSupplier" EntitySet="ClientSupplier" />
+            <End Role="ClientSupplier1" EntitySet="ClientSupplier" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientVat_ClientSupplierType" Association="Self.FK_ClientVat_ClientSupplierType">
+            <End Role="ClientSupplierType" EntitySet="ClientSupplierType" />
+            <End Role="ClientVATType" EntitySet="ClientVATType" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CS.Data.Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ClientSupplier">
+          <Key>
+            <PropertyRef Name="ClientID" />
+          </Key>
+          <Property Name="ClientID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContactID" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ParentClientID" Type="Int32" />
+          <Property Name="DefaultRecoveryRate" Type="Double" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="OfficeID" Type="Int32" Nullable="false" />
+          <Property Name="DepartmentID" Type="Int32" Nullable="false" />
+          <Property Name="ClientCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PeriodEndDate" Type="DateTime" Precision="0" />
+          <Property Name="Vattable" Type="Boolean" Nullable="false" />
+          <Property Name="CliFileID" Type="Int32" Nullable="false" />
+          <Property Name="Internal" Type="Boolean" Nullable="false" />
+          <Property Name="ClientVATTypeID" Type="Byte" Nullable="false" />
+          <Property Name="ZID" Type="Int32" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="DateCreated" Type="DateTime" Precision="0" />
+          <Property Name="DefaultCurrency" Type="Int32" />
+          <Property Name="ClientSupplierType" Type="Byte" Nullable="false" />
+          <Property Name="TermsTypeID" Type="Byte" />
+          <Property Name="TermsDay" Type="Int16" />
+          <Property Name="PaymentTypeID" Type="Int16" />
+          <Property Name="CreditLimit" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="DefaultNominalID" Type="Int16" />
+          <Property Name="AccountStatusID" Type="Int16" />
+          <Property Name="BankAccountName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BankAccountNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BankSortCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BACSRef" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ApprovalEmpID" Type="Int32" />
+          <Property Name="DefaultContactAssoc" Type="Int32" />
+          <Property Name="Closed" Type="DateTime" Precision="0" />
+          <Property Name="CompanyRegistrationNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyTaxReference" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RowGuid" Type="Guid" Nullable="false" />
+          <Property Name="ClientClosedReasonId" Type="Int32" />
+          <Property Name="Draft" Type="Boolean" Nullable="false" />
+          <Property Name="ApprovedBy" Type="Int32" />
+          <Property Name="ReasonWonId" Type="Int32" />
+          <NavigationProperty Name="ClientVATType" Relationship="Self.FK_Client_ClientVATType" FromRole="ClientSupplier" ToRole="ClientVATType" />
+          <NavigationProperty Name="ClientSupplierType1" Relationship="Self.FK_ClientSupplier_ClientSupplierType" FromRole="ClientSupplier" ToRole="ClientSupplierType" />
+          <NavigationProperty Name="ClientSupplier1" Relationship="Self.FK_ClientSupplier_ParentClientID" FromRole="ClientSupplier" ToRole="ClientSupplier1" />
+          <NavigationProperty Name="ClientSupplier2" Relationship="Self.FK_ClientSupplier_ParentClientID" FromRole="ClientSupplier1" ToRole="ClientSupplier" />
+        </EntityType>
+        <EntityType Name="ClientSupplierType">
+          <Key>
+            <PropertyRef Name="ClientSupplierTypeID" />
+          </Key>
+          <Property Name="ClientSupplierTypeID" Type="Byte" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ClientSuppliers" Relationship="Self.FK_ClientSupplier_ClientSupplierType" FromRole="ClientSupplierType" ToRole="ClientSupplier" />
+          <NavigationProperty Name="ClientVATTypes" Relationship="Self.FK_ClientVat_ClientSupplierType" FromRole="ClientSupplierType" ToRole="ClientVATType" />
+        </EntityType>
+        <EntityType Name="ClientVATType">
+          <Key>
+            <PropertyRef Name="ClientVATTypeID" />
+          </Key>
+          <Property Name="ClientVATTypeID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ShortName" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="LongName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="VatRateId" Type="Int32" />
+          <Property Name="DiscountMultiplier" Type="Decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="ClientSupplierType" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="ClientSuppliers" Relationship="Self.FK_Client_ClientVATType" FromRole="ClientVATType" ToRole="ClientSupplier" />
+          <NavigationProperty Name="ClientSupplierType1" Relationship="Self.FK_ClientVat_ClientSupplierType" FromRole="ClientVATType" ToRole="ClientSupplierType" />
+        </EntityType>
+        <Association Name="FK_Client_ClientVATType">
+          <End Role="ClientVATType" Type="Self.ClientVATType" Multiplicity="1" />
+          <End Role="ClientSupplier" Type="Self.ClientSupplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientVATType">
+              <PropertyRef Name="ClientVATTypeID" />
+            </Principal>
+            <Dependent Role="ClientSupplier">
+              <PropertyRef Name="ClientVATTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientSupplier_ClientSupplierType">
+          <End Role="ClientSupplierType" Type="Self.ClientSupplierType" Multiplicity="1" />
+          <End Role="ClientSupplier" Type="Self.ClientSupplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientSupplierType">
+              <PropertyRef Name="ClientSupplierTypeID" />
+            </Principal>
+            <Dependent Role="ClientSupplier">
+              <PropertyRef Name="ClientSupplierType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientSupplier_ParentClientID">
+          <End Role="ClientSupplier" Type="Self.ClientSupplier" Multiplicity="0..1" />
+          <End Role="ClientSupplier1" Type="Self.ClientSupplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientSupplier">
+              <PropertyRef Name="ClientID" />
+            </Principal>
+            <Dependent Role="ClientSupplier1">
+              <PropertyRef Name="ParentClientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientVat_ClientSupplierType">
+          <End Role="ClientSupplierType" Type="Self.ClientSupplierType" Multiplicity="1" />
+          <End Role="ClientVATType" Type="Self.ClientVATType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientSupplierType">
+              <PropertyRef Name="ClientSupplierTypeID" />
+            </Principal>
+            <Dependent Role="ClientVATType">
+              <PropertyRef Name="ClientSupplierType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ClientContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ClientSuppliers" EntityType="Self.ClientSupplier" />
+          <EntitySet Name="ClientSupplierTypes" EntityType="Self.ClientSupplierType" />
+          <EntitySet Name="ClientVATTypes" EntityType="Self.ClientVATType" />
+          <AssociationSet Name="FK_Client_ClientVATType" Association="Self.FK_Client_ClientVATType">
+            <End Role="ClientVATType" EntitySet="ClientVATTypes" />
+            <End Role="ClientSupplier" EntitySet="ClientSuppliers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientSupplier_ClientSupplierType" Association="Self.FK_ClientSupplier_ClientSupplierType">
+            <End Role="ClientSupplierType" EntitySet="ClientSupplierTypes" />
+            <End Role="ClientSupplier" EntitySet="ClientSuppliers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientSupplier_ParentClientID" Association="Self.FK_ClientSupplier_ParentClientID">
+            <End Role="ClientSupplier" EntitySet="ClientSuppliers" />
+            <End Role="ClientSupplier1" EntitySet="ClientSuppliers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientVat_ClientSupplierType" Association="Self.FK_ClientVat_ClientSupplierType">
+            <End Role="ClientSupplierType" EntitySet="ClientSupplierTypes" />
+            <End Role="ClientVATType" EntitySet="ClientVATTypes" />
+          </AssociationSet>
+          <FunctionImport Name="SH_Search_Clients" ReturnType="Collection(CS.Data.Model.SH_Search_Clients_Result)">
+            <Parameter Name="SearchText" Mode="In" Type="String" />
+            <Parameter Name="EmployeeId" Mode="In" Type="Int32" />
+            <Parameter Name="SearchOnly" Mode="In" Type="Int32" />
+            <Parameter Name="IncludeClosed" Mode="In" Type="Int32" />
+            <Parameter Name="BusinessType" Mode="In" Type="Int32" />
+            <Parameter Name="IncludeDraft" Mode="In" Type="Boolean" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="SH_Search_Clients_Result">
+          <Property Type="Int32" Name="ID" Nullable="true" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="210" />
+          <Property Type="String" Name="CopyName" Nullable="true" MaxLength="210" />
+          <Property Type="String" Name="Code" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DepartmentName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="OfficeName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CompanyName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Partner" Nullable="true" MaxLength="111" />
+          <Property Type="Int32" Name="ClientId" Nullable="true" />
+          <Property Type="Int32" Name="ContactId" Nullable="true" />
+          <Property Type="String" Name="Business" Nullable="true" MaxLength="120" />
+          <Property Type="String" Name="BusinessFax" Nullable="true" MaxLength="120" />
+          <Property Type="String" Name="Mobile" Nullable="true" MaxLength="120" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="120" />
+          <Property Type="DateTime" Name="Closed" Nullable="true" Precision="16" />
+          <Property Type="Byte" Name="ClientSupplierType" Nullable="true" />
+          <Property Type="String" Name="MailingName" Nullable="true" MaxLength="255" />
+          <Property Type="Boolean" Name="Draft" Nullable="true" />
+          <Property Type="String" Name="ConsolidatedStatus" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="BusinessType" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="AliasTypeName" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="ManagerName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Salutation" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="IsFavourite" Nullable="true" />
+          <Property Type="Guid" Name="PortalClientGuid" Nullable="true" />
+          <Property Type="Boolean" Name="IsPortalUser" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CSDataModelStoreContainer" CdmEntityContainer="ClientContext">
+          <EntitySetMapping Name="ClientSuppliers">
+            <EntityTypeMapping TypeName="CS.Data.Model.ClientSupplier">
+              <MappingFragment StoreEntitySet="ClientSupplier">
+                <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+                <ScalarProperty Name="ContactID" ColumnName="ContactID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ParentClientID" ColumnName="ParentClientID" />
+                <ScalarProperty Name="DefaultRecoveryRate" ColumnName="DefaultRecoveryRate" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="OfficeID" ColumnName="OfficeID" />
+                <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+                <ScalarProperty Name="ClientCode" ColumnName="ClientCode" />
+                <ScalarProperty Name="PeriodEndDate" ColumnName="PeriodEndDate" />
+                <ScalarProperty Name="Vattable" ColumnName="Vattable" />
+                <ScalarProperty Name="CliFileID" ColumnName="CliFileID" />
+                <ScalarProperty Name="Internal" ColumnName="Internal" />
+                <ScalarProperty Name="ClientVATTypeID" ColumnName="ClientVATTypeID" />
+                <ScalarProperty Name="ZID" ColumnName="ZID" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DefaultCurrency" ColumnName="DefaultCurrency" />
+                <ScalarProperty Name="ClientSupplierType" ColumnName="ClientSupplierType" />
+                <ScalarProperty Name="TermsTypeID" ColumnName="TermsTypeID" />
+                <ScalarProperty Name="TermsDay" ColumnName="TermsDay" />
+                <ScalarProperty Name="PaymentTypeID" ColumnName="PaymentTypeID" />
+                <ScalarProperty Name="CreditLimit" ColumnName="CreditLimit" />
+                <ScalarProperty Name="DefaultNominalID" ColumnName="DefaultNominalID" />
+                <ScalarProperty Name="AccountStatusID" ColumnName="AccountStatusID" />
+                <ScalarProperty Name="BankAccountName" ColumnName="BankAccountName" />
+                <ScalarProperty Name="BankAccountNum" ColumnName="BankAccountNum" />
+                <ScalarProperty Name="BankSortCode" ColumnName="BankSortCode" />
+                <ScalarProperty Name="BACSRef" ColumnName="BACSRef" />
+                <ScalarProperty Name="ApprovalEmpID" ColumnName="ApprovalEmpID" />
+                <ScalarProperty Name="DefaultContactAssoc" ColumnName="DefaultContactAssoc" />
+                <ScalarProperty Name="Closed" ColumnName="Closed" />
+                <ScalarProperty Name="CompanyRegistrationNo" ColumnName="CompanyRegistrationNo" />
+                <ScalarProperty Name="CompanyTaxReference" ColumnName="CompanyTaxReference" />
+                <ScalarProperty Name="RowGuid" ColumnName="RowGuid" />
+                <ScalarProperty Name="ClientClosedReasonId" ColumnName="ClientClosedReasonId" />
+                <ScalarProperty Name="Draft" ColumnName="Draft" />
+                <ScalarProperty Name="ApprovedBy" ColumnName="ApprovedBy" />
+                <ScalarProperty Name="ReasonWonId" ColumnName="ReasonWonId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientSupplierTypes">
+            <EntityTypeMapping TypeName="CS.Data.Model.ClientSupplierType">
+              <MappingFragment StoreEntitySet="ClientSupplierType">
+                <ScalarProperty Name="ClientSupplierTypeID" ColumnName="ClientSupplierTypeID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientVATTypes">
+            <EntityTypeMapping TypeName="CS.Data.Model.ClientVATType">
+              <MappingFragment StoreEntitySet="ClientVATType">
+                <ScalarProperty Name="ClientVATTypeID" ColumnName="ClientVATTypeID" />
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+                <ScalarProperty Name="LongName" ColumnName="LongName" />
+                <ScalarProperty Name="VatRateId" ColumnName="VatRateId" />
+                <ScalarProperty Name="DiscountMultiplier" ColumnName="DiscountMultiplier" />
+                <ScalarProperty Name="ClientSupplierType" ColumnName="ClientSupplierType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SH_Search_Clients" FunctionName="CS.Data.Model.Store.SH_Search_Clients">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CS.Data.Model.SH_Search_Clients_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CopyName" ColumnName="CopyName" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+                <ScalarProperty Name="OfficeName" ColumnName="OfficeName" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="Partner" ColumnName="Partner" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="ContactId" ColumnName="ContactId" />
+                <ScalarProperty Name="Business" ColumnName="Business" />
+                <ScalarProperty Name="BusinessFax" ColumnName="BusinessFax" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Closed" ColumnName="Closed" />
+                <ScalarProperty Name="ClientSupplierType" ColumnName="ClientSupplierType" />
+                <ScalarProperty Name="MailingName" ColumnName="MailingName" />
+                <ScalarProperty Name="Draft" ColumnName="Draft" />
+                <ScalarProperty Name="ConsolidatedStatus" ColumnName="ConsolidatedStatus" />
+                <ScalarProperty Name="BusinessType" ColumnName="BusinessType" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="AliasTypeName" ColumnName="AliasTypeName" />
+                <ScalarProperty Name="ManagerName" ColumnName="ManagerName" />
+                <ScalarProperty Name="Salutation" ColumnName="Salutation" />
+                <ScalarProperty Name="IsFavourite" ColumnName="IsFavourite" />
+                <ScalarProperty Name="PortalClientGuid" ColumnName="PortalClientGuid" />
+                <ScalarProperty Name="IsPortalUser" ColumnName="IsPortalUser" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

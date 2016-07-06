@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c7ed139e953a418aa0440d2058549dd6" Name="Diagram1" ZoomLevel="90">
+        <EntityTypeShape EntityType="CS.Data.Model.ClientSupplier" Width="1.5" PointX="5.25" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CS.Data.Model.ClientSupplierType" Width="1.5" PointX="0.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CS.Data.Model.ClientVATType" Width="1.5" PointX="3" PointY="6.5" IsExpanded="true" />
+        <AssociationConnector Association="CS.Data.Model.FK_Client_ClientVATType" ManuallyRouted="false" />
+        <AssociationConnector Association="CS.Data.Model.FK_ClientSupplier_ClientSupplierType" ManuallyRouted="false" />
+        <AssociationConnector Association="CS.Data.Model.FK_ClientSupplier_ParentClientID" ManuallyRouted="false" />
+        <AssociationConnector Association="CS.Data.Model.FK_ClientVat_ClientSupplierType" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

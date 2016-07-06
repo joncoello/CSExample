@@ -32,6 +32,7 @@
   <ItemGroup>
     <Reference Include="CSSTaskManagement">
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\CCH ProSystem\Deploy\CSSTaskManagement.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="DAL, Version=2015.40.0.0, Culture=neutral, PublicKeyToken=77d77f643ec3a3e9, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
