@@ -12,12 +12,12 @@ namespace CS.Activities
     {
     
         [RequiredArgument]    
-        public InArgument<string> DirectoryToEmpty { get; set; }
+        public InArgument<string> DirectoryToEmptyZ { get; set; }
 
         
         protected override void Execute(CodeActivityContext context)
         {
-            string directoryToEmpty = DirectoryToEmpty.Get(context);
+            string directoryToEmpty = DirectoryToEmptyZ.Get(context);
             if (Directory.Exists(directoryToEmpty))
             {
                 Directory.EnumerateFiles(directoryToEmpty).ToList().ForEach(f => File.Delete(f));
